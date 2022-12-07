@@ -1,0 +1,6 @@
+1. handle back button(done on monday)
+2. Better UI
+3. get images and icons
+4. handle various screens through navigation and sub navigation
+5. add splash screen and async storage
+6. Customised Loader
