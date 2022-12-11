@@ -63,11 +63,8 @@ const Navigator = () => {
       currentRoute.name.toLowerCase() === 'login' ||
       currentRoute.name.toLowerCase() === 'dashboard'
     ) {
-      console.log('current route', currentRoute);
-      AsyncStorage.setItem('user', '');
       backAction();
     } else {
-      console.log('current route', currentRoute);
       if (navigationRef.current.canGoBack()) {
         navigationRef.current.goBack();
       }
@@ -145,6 +142,7 @@ const Navigator = () => {
         <Stack.Screen name="CALCULATE EMI" component={CalculateEmiScreen} />
         <Stack.Screen name="CONTACT US" component={ContactUsScreen} />
         <Stack.Screen name="SHARE FEEDBACK" component={ShareFeedbackScreen} />
+
         {/* ********************************* Enquiry Components ******************************* */}
         <Stack.Screen name="Recent Orders" component={RecentOrdersScreen} />
         <Stack.Screen name="Todays Followup" component={TodaysFollowupScreen} />

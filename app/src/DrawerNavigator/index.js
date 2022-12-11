@@ -18,11 +18,16 @@ import CircularsScreen from '../Circulars';
 import ContactUsScreen from '../CONTACT US';
 import ShareFeedbackScreen from '../SHARE FEEDBACK';
 
+import CustomDrawer from '../CustomDrawer.js';
+
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Dashboard">
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+      useLegacyImplementation
+      drawerContent={props => <CustomDrawer {...props} />}>
       <Drawer.Screen name="Dashboard" component={DashboardScreen} />
       <Drawer.Screen
         name="WOT Certification"

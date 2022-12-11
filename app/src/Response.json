@@ -1,0 +1,71 @@
+{
+  "PWSESSIONRS": [
+    {
+      "PWPROCESSRS": {
+        "PWHEADER": {
+          "APP_ID": "HSA",
+          "ORG_ID": "HSA",
+          "OUT_PROCESS_ID": "MB_GET_AUTHORISED",
+          "IN_PROCESS_ID": "MB_GET_AUTHORISED",
+          "LOGIN_ID": ""
+        },
+        "PWERROR": {},
+        "PWDATA": {
+          "MB_GET_AUTHORISED": {
+            "Row": [
+              {
+                "dealer_pin": "122001",
+                "mob": "7014363583",
+                "role": "DSE",
+                "city": "GURGAON",
+                "leadsq_key": "Y",
+                "dealer_bu_id": "1-89MAGI",
+                "wot_download_path": "https://mobappstore.heromotocorp.com/web/dwapp/index.html?app=WOT",
+                "gstin": "06AABCJ4336N1ZE",
+                "dealer_code": "10800",
+                "dsm_id": "10800S20_LOCK",
+                "leadsq_history_url": " https://run.leadsquared.com/SingleSignOn/ActivityHistory?LeadID=value&CrmSessionId=",
+                "uid": "TEST10800 ",
+                "myclick_active": "Y",
+                "scope": "user",
+                "tot": "access",
+                "EXTENDED_TEST_ENABLE": "YES",
+                "dealer_address2": "",
+                "state_id": "6",
+                "state": "HARYANA",
+                "first_name": "TESTING",
+                "dealer_address1": "NEAR DISTRICT COURTS GURGAON SOHNA ROAD",
+                "mmi_active": "Y",
+                "wot_access_token": "c3d35e9917b5af3070f4bff75c35c",
+                "login_id": "TEST10800",
+                "isRseFlag": "0",
+                "last_name": "ID",
+                "saarthi_download_path": "https://mobappstore.heromotocorp.com/web/dwapp/index.html?app=SAARTHI",
+                "otp_enabled": "",
+                "version": "11.7",
+                "dealer_district": "GURGAON",
+                "product_download_path": "https://mobappstore.heromotocorp.com/web/dwapp/index.html?app=PRODUCT",
+                "token": {
+                  "access_token": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SmtaV0ZzWlhKZmNHbHVJam9pTVRJeU1EQXhJaXdpYlc5aUlqb2lOekF4TkRNMk16VTRNeUlzSW5KdmJHVWlPaUpFVTBVaUxDSmphWFI1SWpvaVIxVlNSMEZQVGlJc0lteGxZV1J6Y1Y5clpYa2lPaUpaSWl3aVpHVmhiR1Z5WDJKMVgybGtJam9pTVMwNE9VMUJSMGtpTENKM2IzUmZaRzkzYm14dllXUmZjR0YwYUNJNkltaDBkSEJ6T2k4dmJXOWlZWEJ3YzNSdmNtVXVhR1Z5YjIxdmRHOWpiM0p3TG1OdmJTOTNaV0l2WkhkaGNIQXZhVzVrWlhndWFIUnRiRDloY0hBOVYwOVVJaXdpWjNOMGFXNGlPaUl3TmtGQlFrTktORE16Tms0eFdrVWlMQ0prWldGc1pYSmZZMjlrWlNJNklqRXdPREF3SWl3aVpITnRYMmxrSWpvaU1UQTRNREJUTWpCZlRFOURTeUlzSW14bFlXUnpjVjlvYVhOMGIzSjVYM1Z5YkNJNklpQm9kSFJ3Y3pvdkwzSjFiaTVzWldGa2MzRjFZWEpsWkM1amIyMHZVMmx1WjJ4bFUybG5iazl1TDBGamRHbDJhWFI1U0dsemRHOXllVDlNWldGa1NVUTlkbUZzZFdVbVEzSnRVMlZ6YzJsdmJrbGtQU0lzSW5WcFpDSTZJbFJGVTFReE1EZ3dNQ0FpTENKdGVXTnNhV05yWDJGamRHbDJaU0k2SWxraUxDSnpZMjl3WlNJNkluVnpaWElpTENKMGIzUWlPaUpoWTJObGMzTWlMQ0pGV0ZSRlRrUkZSRjlVUlZOVVgwVk9RVUpNUlNJNklsbEZVeUlzSW1SbFlXeGxjbDloWkdSeVpYTnpNaUk2SWlJc0luTjBZWFJsWDJsa0lqb2lOaUlzSW5OMFlYUmxJam9pU0VGU1dVRk9RU0lzSW1acGNuTjBYMjVoYldVaU9pSlVSVk5VU1U1SElpd2laR1ZoYkdWeVgyRmtaSEpsYzNNeElqb2lUa1ZCVWlCRVNWTlVVa2xEVkNCRFQxVlNWRk1nUjFWU1IwRlBUaUJUVDBoT1FTQlNUMEZFSWl3aWJXMXBYMkZqZEdsMlpTSTZJbGtpTENKM2IzUmZZV05qWlhOelgzUnZhMlZ1SWpvaVl6TmtNelZsT1RreE4ySTFZV1l6TURjd1pqUmlabVkzTldNek5XTWlMQ0pzYjJkcGJsOXBaQ0k2SWxSRlUxUXhNRGd3TUNJc0ltbHpVbk5sUm14aFp5STZJakFpTENKc1lYTjBYMjVoYldVaU9pSkpSQ0lzSW5OaFlYSjBhR2xmWkc5M2JteHZZV1JmY0dGMGFDSTZJbWgwZEhCek9pOHZiVzlpWVhCd2MzUnZjbVV1YUdWeWIyMXZkRzlqYjNKd0xtTnZiUzkzWldJdlpIZGhjSEF2YVc1a1pYZ3VhSFJ0YkQ5aGNIQTlVMEZCVWxSSVNTSXNJbTkwY0Y5bGJtRmliR1ZrSWpvaUlpd2lkbVZ5YzJsdmJpSTZJakV4TGpjaUxDSmtaV0ZzWlhKZlpHbHpkSEpwWTNRaU9pSkhWVkpIUVU5T0lpd2ljSEp2WkhWamRGOWtiM2R1Ykc5aFpGOXdZWFJvSWpvaWFIUjBjSE02THk5dGIySmhjSEJ6ZEc5eVpTNW9aWEp2Ylc5MGIyTnZjbkF1WTI5dEwzZGxZaTlrZDJGd2NDOXBibVJsZUM1b2RHMXNQMkZ3Y0QxUVVrOUVWVU5VSWl3aWNISnZaSFZqZEVOdVptZGZaRzkzYm14dllXUmZjR0YwYUNJNkltaDBkSEJ6T2k4dmJXOWlZWEJ3YzNSdmNtVXVhR1Z5YjIxdmRHOWpiM0p3TG1OdmJTOTNaV0l2WkhkaGNIQXZhVzVrWlhndWFIUnRiRDloY0hBOVEwOU9Sa2xIVlZKQlZFOVNJaXdpUkVGVVJTSTZJakl3TWpJdE1ESXRNRGtnTVRNNk1ESTZORFl1TUNJc0ltRndjRjl1WVcxbElqb2lTRk5CSWl3aVpHVmhiR1Z5WDIxaGFXNWZjR2h2Ym1VaU9pSXdNVEkwTFRJek1ERXlOVE1pTENKemRXTmpaWE56SWpvaU1TSXNJbUZqWTJWemMxOXJaWGtpT2lKa1lqVmhNR0l6T0dRM05HWmtNbU13TldaaU5tUmlPRFpsTW1Rd0lpd2libUZ0WlNJNkluVnpaWElpTENKa1pXRnNaWEpmYm1GdFpTSTZJa3BCUVZOUFJFaEJJRUZWVkU4Z1VGWlVJRXhVUkNJc0luZGxYMk52Ym01bFkzUmZZV04wYVhabElqb2lXU0lzSW5CdmMybDBhVzl1SWpvaVJGTkZJaXdpWkhOdFgyNWhiV1VpT2lKU2IyaHBkQ0JIWVhWeUlpd2laWGh3SWpveE5qY3hOak16TlRreGZRLllJNl9MS0M2MU95TEFVRUtXYkkzOVFtZEpMQ3lqTjNmaG1CZk1wNEF0c1k=",
+                  "success": "1",
+                  "token": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKSVV6STFOaUo5LmV5SmtaV0ZzWlhKZmNHbHVJam9pTVRJeU1EQXhJaXdpYlc5aUlqb2lOekF4TkRNMk16VTRNeUlzSW5KdmJHVWlPaUpFVTBVaUxDSmphWFI1SWpvaVIxVlNSMEZQVGlJc0lteGxZV1J6Y1Y5clpYa2lPaUpaSWl3aVpHVmhiR1Z5WDJKMVgybGtJam9pTVMwNE9VMUJSMGtpTENKM2IzUmZaRzkzYm14dllXUmZjR0YwYUNJNkltaDBkSEJ6T2k4dmJXOWlZWEJ3YzNSdmNtVXVhR1Z5YjIxdmRHOWpiM0p3TG1OdmJTOTNaV0l2WkhkaGNIQXZhVzVrWlhndWFIUnRiRDloY0hBOVYwOVVJaXdpWjNOMGFXNGlPaUl3TmtGQlFrTktORE16Tms0eFdrVWlMQ0prWldGc1pYSmZZMjlrWlNJNklqRXdPREF3SWl3aVpITnRYMmxrSWpvaU1UQTRNREJUTWpCZlRFOURTeUlzSW14bFlXUnpjVjlvYVhOMGIzSjVYM1Z5YkNJNklpQm9kSFJ3Y3pvdkwzSjFiaTVzWldGa2MzRjFZWEpsWkM1amIyMHZVMmx1WjJ4bFUybG5iazl1TDBGamRHbDJhWFI1U0dsemRHOXllVDlNWldGa1NVUTlkbUZzZFdVbVEzSnRVMlZ6YzJsdmJrbGtQU0lzSW5WcFpDSTZJbFJGVTFReE1EZ3dNQ0FpTENKdGVXTnNhV05yWDJGamRHbDJaU0k2SWxraUxDSnpZMjl3WlNJNkluVnpaWElpTENKRldGUkZUa1JGUkY5VVJWTlVYMFZPUVVKTVJTSTZJbGxGVXlJc0ltUmxZV3hsY2w5aFpHUnlaWE56TWlJNklpSXNJbk4wWVhSbFgybGtJam9pTmlJc0luTjBZWFJsSWpvaVNFRlNXVUZPUVNJc0ltWnBjbk4wWDI1aGJXVWlPaUpVUlZOVVNVNUhJaXdpWkdWaGJHVnlYMkZrWkhKbGMzTXhJam9pVGtWQlVpQkVTVk5VVWtsRFZDQkRUMVZTVkZNZ1IxVlNSMEZQVGlCVFQwaE9RU0JTVDBGRUlpd2liVzFwWDJGamRHbDJaU0k2SWxraUxDSjNiM1JmWVdOalpYTnpYM1J2YTJWdUlqb2lZek5rTXpWbE9Ua3hOMkkxWVdZek1EY3daalJpWm1ZM05XTXpOV01pTENKc2IyZHBibDlwWkNJNklsUkZVMVF4TURnd01DSXNJbWx6VW5ObFJteGhaeUk2SWpBaUxDSnNZWE4wWDI1aGJXVWlPaUpKUkNJc0luTmhZWEowYUdsZlpHOTNibXh2WVdSZmNHRjBhQ0k2SW1oMGRIQnpPaTh2Ylc5aVlYQndjM1J2Y21VdWFHVnliMjF2ZEc5amIzSndMbU52YlM5M1pXSXZaSGRoY0hBdmFXNWtaWGd1YUhSdGJEOWhjSEE5VTBGQlVsUklTU0lzSW05MGNGOWxibUZpYkdWa0lqb2lJaXdpZG1WeWMybHZiaUk2SWpFeExqY2lMQ0prWldGc1pYSmZaR2x6ZEhKcFkzUWlPaUpIVlZKSFFVOU9JaXdpY0hKdlpIVmpkRjlrYjNkdWJHOWhaRjl3WVhSb0lqb2lhSFIwY0hNNkx5OXRiMkpoY0hCemRHOXlaUzVvWlhKdmJXOTBiMk52Y25BdVkyOXRMM2RsWWk5a2QyRndjQzlwYm1SbGVDNW9kRzFzUDJGd2NEMVFVazlFVlVOVUlpd2ljSEp2WkhWamRFTnVabWRmWkc5M2JteHZZV1JmY0dGMGFDSTZJbWgwZEhCek9pOHZiVzlpWVhCd2MzUnZjbVV1YUdWeWIyMXZkRzlqYjNKd0xtTnZiUzkzWldJdlpIZGhjSEF2YVc1a1pYZ3VhSFJ0YkQ5aGNIQTlRMDlPUmtsSFZWSkJWRTlTSWl3aVJFRlVSU0k2SWpJd01qSXRNREl0TURrZ01UTTZNREk2TkRZdU1DSXNJbUZ3Y0Y5dVlXMWxJam9pU0ZOQklpd2laR1ZoYkdWeVgyMWhhVzVmY0dodmJtVWlPaUl3TVRJMExUSXpNREV5TlRNaUxDSnpkV05qWlhOeklqb2lNU0lzSW1GalkyVnpjMTlyWlhraU9pSmtZalZoTUdJek9HUTNOR1prTW1Nd05XWmlObVJpT0RabE1tUXdJaXdpYm1GdFpTSTZJblZ6WlhJaUxDSmtaV0ZzWlhKZmJtRnRaU0k2SWtwQlFWTlBSRWhCSUVGVlZFOGdVRlpVSUV4VVJDSXNJbmRsWDJOdmJtNWxZM1JmWVdOMGFYWmxJam9pV1NJc0luQnZjMmwwYVc5dUlqb2lSRk5GSWl3aVpITnRYMjVoYldVaU9pSlNiMmhwZENCSFlYVnlJaXdpWlhod0lqb3hOamN3TnpnM05Ua3hmUS53UUpLQ0kzSmdmWnpzUzI2bmxESEdyX052TGVqTTJrV3ZHZ3RUUW9LNUU0"
+                },
+                "productCnfg_download_path": "https://mobappstore.heromotocorp.com/web/dwapp/index.html?app=CONFIGURATOR",
+                "DATE": "2022-02-09 13:02:46.0",
+                "app_name": "HSA",
+                "dealer_main_phone": "0124-2301253",
+                "success": "1",
+                "access_key": "db5a0b38d74fd2c05fb6db86e2d0",
+                "name": "user",
+                "dealer_name": "JAASODHA AUTO PVT LTD",
+                "we_connect_active": "Y",
+                "position": "DSE",
+                "dsm_name": "Rohit Gaur"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

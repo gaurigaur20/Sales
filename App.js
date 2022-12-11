@@ -8,6 +8,7 @@
 
 import React, {useEffect} from 'react';
 import {StatusBar, View, Text, Platform} from 'react-native';
+import FlashMessage from 'react-native-flash-message';
 
 import Splash from 'rnative-splash';
 
@@ -26,6 +27,7 @@ export default App = () => {
   return (
     <>
       <Navigator />
+      <FlashMessage position="top" />
       {/* <DrawerNavigator /> */}
     </>
   );

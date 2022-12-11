@@ -1,30 +1,71 @@
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Pressable,
-  Button,
-} from 'react-native';
+import {View, Text, TextInput, Pressable, Button} from 'react-native';
 import React, {useState} from 'react';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {showMessage} from 'react-native-flash-message';
+
+import * as API from '../api/index';
+
+const API_PATH = '';
+
+const sendOtp = async (userID, navigation) => {
+  const data = {
+    0: userID,
+    1: '9.0',
+  };
+  const token = '';
+  const link = 'MB_Authentication';
+  const isMultiple = false; //true or false find
+  const requestData = {
+    header: {
+      IN_PROCESS_ID: '1',
+      OUT_PROCESS_ID: link,
+      LOGIN_ID: '',
+    },
+    isMultiple: isMultiple,
+    token: token,
+    data: {
+      [`${link}`]: {
+        Row: [data],
+      },
+    },
+  };
+
+  return API.post(link, requestData, isMultiple, navigation);
+};
 
 const LoginScreen = ({navigation}) => {
   const [userId, setuserId] = useState('');
-  AsyncStorage.setItem('user', userId);
 
-  const handleSendOTp = () => {
+  const handleSendOTP = () => {
     if (userId) {
-      navigation.navigate('Otp');
-      //   if (userId == 'TEST') {
-      //     alert('otp sent');
-      //     navigation.navigate('Otp');
-      //   } else {
-      //     alert('user name does not exist');
-      //   }
+      sendOtp(userId, navigation)
+        .then(responseData => {
+          if (responseData.success === '1') {
+            const user_id = responseData.login_id;
+            AsyncStorage.setItem('user', user_id);
+            // console.log('user id', user_id);
+            navigation.navigate('Otp', {user_id});
+          } else {
+            showMessage({
+              message: responseData.msg,
+              type: 'danger',
+              autoHide: 'true',
+              duration: 1000,
+            });
+          }
+        })
+        .catch(errData => {
+          console.log('Error while sending otp', errData);
+          showMessage({
+            message: errData.msg,
+            type: 'danger',
+            autoHide: 'true',
+            duration: 1000,
+          });
+        });
     } else {
-      alert('please enter a user Id');
+      alert('please enter userId');
     }
   };
   return (
@@ -35,7 +76,7 @@ const LoginScreen = ({navigation}) => {
         onChangeText={value => setuserId(value)}
         maxLength={10}
       />
-      <Button title="SEND OTP" onPress={() => handleSendOTp()} />
+      <Button title="SEND OTP" onPress={() => handleSendOTP()} />
     </View>
   );
 };

@@ -10,9 +10,21 @@ const SplashScreen = ({navigation}) => {
 
   const getUserData = async () => {
     try {
-      let data = await AsyncStorage.getItem('user');
-      console.log('data', data);
-      navigation.replace(data == null ? 'Login' : 'Dashboard');
+      const userId = await AsyncStorage.getItem('user');
+      const key = await AsyncStorage.getItem('otp');
+      const data = {
+        userid: userId,
+        key: key,
+      };
+      console.log('async data', data);
+      if (data.userid == null && data.key == null) {
+        navigation.replace('Login');
+      } else if (data.userid != null && data.key != null) {
+        navigation.replace('Dashboard');
+      }
+      else{
+        navigation.replace('Login')
+      }
     } catch (error) {
       console.log('error', error);
     }
@@ -21,7 +33,3 @@ const SplashScreen = ({navigation}) => {
 };
 
 export default SplashScreen;
-
-// AsyncStorage.getItem('user').then(value =>
-//   navigation.replace(value === null ? 'Auth' : 'DrawerNavigationRoutes'),
-// );
