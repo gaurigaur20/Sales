@@ -45,6 +45,7 @@ const LoginScreen = ({navigation}) => {
             const user_id = responseData.login_id;
             AsyncStorage.setItem('user', user_id);
             // console.log('user id', user_id);
+            setuserId(' ');
             navigation.navigate('Otp', {user_id});
           } else {
             showMessage({

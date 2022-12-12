@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Alert} from 'react-native';
+import {Alert, Image, View, Text} from 'react-native';
 
 import {
   DrawerContentScrollView,
@@ -12,6 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const CustomDrawer = props => {
   const handleLogOut = () => {
     AsyncStorage.setItem('user', '');
+    props.navigation.closeDrawer();
     props.navigation.navigate('Login');
   };
 
@@ -25,12 +26,28 @@ const CustomDrawer = props => {
       {text: 'YES', onPress: () => handleLogOut()},
     ]);
   };
-
+  const url =
+    'https://hmclmobdiag.blob.core.windows.net/uploads/tso/profile_sample.jpg';
   return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem label="LOG OUT" onPress={() => logOut()} />
-    </DrawerContentScrollView>
+    <View style={{flex: 1}}>
+      <View
+        style={{height: 150, justifyContent: 'center', alignItems: 'center'}}>
+        <Image
+          source={{uri: url}}
+          style={{
+            resizeMode: 'center',
+            width: 50,
+            height: 50,
+            borderRadius: 100 / 2,
+          }}
+        />
+        <Text>User Id</Text>
+      </View>
+      <DrawerContentScrollView {...props}>
+        <DrawerItemList {...props} />
+        <DrawerItem label="LOG OUT" onPress={() => logOut()} />
+      </DrawerContentScrollView>
+    </View>
   );
 };
 

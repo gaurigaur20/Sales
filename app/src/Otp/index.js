@@ -71,9 +71,10 @@ const OtpScreen = ({navigation, route}) => {
     const token = '';
     const link = 'MB_GET_AUTHORISED';
     const isMultiple = false; //true or false find
+    const inProcessId = '26';
     const requestData = {
       header: {
-        IN_PROCESS_ID: '26',
+        IN_PROCESS_ID: inProcessId,
         OUT_PROCESS_ID: link,
         LOGIN_ID: '',
       },
@@ -96,6 +97,7 @@ const OtpScreen = ({navigation, route}) => {
           .then(responseData => {
             if (responseData.success === '1') {
               AsyncStorage.setItem('otp', value);
+              setValue('');
               navigation.navigate('Dashboard');
             } else {
               showMessage({
