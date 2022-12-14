@@ -1,9 +1,9 @@
-import {USER_DATA} from './actionTypes';
+import {USER_DATA, VERIFY_OTP} from './actionTypes';
 
 export const userLoginData = (data = {}, action) => {
   switch (action.type) {
-    case USER_DATA:
-      return [action.data];
+    case VERIFY_OTP:
+      return action.payload;
     default:
       return data;
   }

@@ -10,6 +10,9 @@ import React, {useEffect} from 'react';
 import {StatusBar, View, Text, Platform} from 'react-native';
 import FlashMessage from 'react-native-flash-message';
 
+import {Provider} from 'react-redux';
+import store from './app/src/redux/store';
+
 import Splash from 'rnative-splash';
 
 import Navigator from './app/index';
@@ -25,10 +28,10 @@ export default App = () => {
   }, []);
 
   return (
-    <>
+    <Provider store={store}>
       <Navigator />
       <FlashMessage position="top" />
       {/* <DrawerNavigator /> */}
-    </>
+    </Provider>
   );
 };

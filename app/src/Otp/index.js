@@ -15,14 +15,17 @@ import {
 } from 'react-native-confirmation-code-field';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {showMessage} from 'react-native-flash-message';
+import {useDispatch} from 'react-redux';
 
 import * as API from '../api/index';
+import {verifyOtpAction} from '../redux/action';
 
 const CELL_COUNT = 4;
 const RESEND_OTP_TIME_LIMIT = 30;
 
 const OtpScreen = ({navigation, route}) => {
   const {user_id} = route.params;
+  const dispatch = useDispatch();
 
   let resendOtpTimerInterval = 0;
 
@@ -97,7 +100,15 @@ const OtpScreen = ({navigation, route}) => {
           .then(responseData => {
             if (responseData.success === '1') {
               AsyncStorage.setItem('otp', value);
-              setValue('');
+              dispatch(verifyOtpAction({user_id}));
+              console.log('action dispatched when verify otp pressed');
+              // setValue('');
+              showMessage({
+                message: 'you are logged in',
+                type: 'success',
+                autoHide: 'true',
+                duration: 1000,
+              });
               navigation.navigate('Dashboard');
             } else {
               showMessage({

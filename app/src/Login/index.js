@@ -6,8 +6,6 @@ import {showMessage} from 'react-native-flash-message';
 
 import * as API from '../api/index';
 
-const API_PATH = '';
-
 const sendOtp = async (userID, navigation) => {
   const data = {
     0: userID,
@@ -44,8 +42,13 @@ const LoginScreen = ({navigation}) => {
           if (responseData.success === '1') {
             const user_id = responseData.login_id;
             AsyncStorage.setItem('user', user_id);
-            // console.log('user id', user_id);
             setuserId(' ');
+            showMessage({
+              message: 'OTP sent',
+              type: 'success',
+              autoHide: 'true',
+              duration: 1000,
+            });
             navigation.navigate('Otp', {user_id});
           } else {
             showMessage({
