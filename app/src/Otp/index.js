@@ -6,6 +6,7 @@ import {
   Pressable,
   Button,
   StyleSheet,
+  ImageBackground,
 } from 'react-native';
 import {
   CodeField,
@@ -13,19 +14,25 @@ import {
   useBlurOnFulfill,
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {showMessage} from 'react-native-flash-message';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-import * as API from '../api/index';
 import {verifyOtpAction} from '../redux/action';
+import Loader from '../Loader';
+
+import Font from '../../theme';
+import DColor from '../../theme/colors';
+
+import IMAGES from '../utils/images';
 
 const CELL_COUNT = 4;
 const RESEND_OTP_TIME_LIMIT = 30;
 
 const OtpScreen = ({navigation, route}) => {
   const {user_id} = route.params;
+  const [isLoader, setIsLoader] = useState(false);
   const dispatch = useDispatch();
+
+  const getLoaderRes = useSelector(state => state.rootReducer.forLoader);
 
   let resendOtpTimerInterval = 0;
 
@@ -38,8 +45,6 @@ const OtpScreen = ({navigation, route}) => {
   const [resendButtonDisabledTime, setResendButtonDisabledTime] = useState(
     RESEND_OTP_TIME_LIMIT,
   );
-
-  AsyncStorage.setItem('otp', value);
 
   //to start resent otp option
   const startResendOtpTimer = () => {
@@ -66,7 +71,7 @@ const OtpScreen = ({navigation, route}) => {
     // todo
     alert('Otp Sent');
   };
-  const verifyOtp = async (user_id, navigation) => {
+  const verifyOtp = async user_id => {
     const data = {
       0: user_id,
       1: value,
@@ -89,45 +94,19 @@ const OtpScreen = ({navigation, route}) => {
         },
       },
     };
+    dispatch(
+      verifyOtpAction({requestData, navigation, isLogin: false, dispatch}),
+    );
 
-    return API.post(link, requestData, isMultiple, navigation);
+    // return API.post(link, requestData, navigation);
   };
 
   const handleOnSubmit = () => {
     if (value) {
       if (value.length == 4) {
-        verifyOtp(user_id, navigation)
-          .then(responseData => {
-            if (responseData.success === '1') {
-              AsyncStorage.setItem('otp', value);
-              dispatch(verifyOtpAction({user_id}));
-              console.log('action dispatched when verify otp pressed');
-              // setValue('');
-              showMessage({
-                message: 'you are logged in',
-                type: 'success',
-                autoHide: 'true',
-                duration: 1000,
-              });
-              navigation.navigate('Dashboard');
-            } else {
-              showMessage({
-                message: responseData.message,
-                type: 'danger',
-                autoHide: 'true',
-                duration: 1000,
-              });
-            }
-          })
-          .catch(errData => {
-            console.log('Error while verifying Otp', errData);
-            showMessage({
-              message: errData.message,
-              type: 'danger',
-              autoHide: 'true',
-              duration: 1000,
-            });
-          });
+        setIsLoader(true);
+        verifyOtp(user_id);
+        setValue('');
       } else {
         alert('error');
       }
@@ -145,10 +124,15 @@ const OtpScreen = ({navigation, route}) => {
       }
     };
   });
+  useEffect(() => {
+    if (getLoaderRes) {
+      setIsLoader(getLoaderRes.loader);
+    }
+  }, [getLoaderRes]);
 
   return (
-    <SafeAreaView style={styles.root}>
-      <Text style={styles.title}>Verify the Authorisation Code</Text>
+    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={styles.root}>
+      <Text style={styles.title}>Please enter OTP</Text>
       <CodeField
         ref={ref}
         {...props}
@@ -172,7 +156,7 @@ const OtpScreen = ({navigation, route}) => {
       {/* View for resend otp  */}
       {resendButtonDisabledTime > 0 ? (
         <Text style={styles.resendCodeText}>
-          Resend Authorisation Code in {resendButtonDisabledTime} sec
+          Resend OTP in {resendButtonDisabledTime} sec
         </Text>
       ) : (
         <Pressable onPress={onResendOtpButtonPress}>
@@ -181,10 +165,11 @@ const OtpScreen = ({navigation, route}) => {
           </View>
         </Pressable>
       )}
-      <View style={styles.button}>
-        <Button title="Submit" onPress={() => handleOnSubmit()} />
-      </View>
-    </SafeAreaView>
+      <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
+        <Text style={styles.textBtnLogin}>Submit OTP</Text>
+      </Pressable>
+      {isLoader && <Loader />}
+    </ImageBackground>
   );
 };
 
@@ -198,6 +183,7 @@ export const styles = StyleSheet.create({
   title: {
     textAlign: 'left',
     fontSize: 20,
+    color: DColor.white6,
     marginStart: 20,
     fontWeight: 'bold',
   },
@@ -222,7 +208,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   cellText: {
-    color: '#000',
+    color: DColor.white6,
     fontSize: 28,
     textAlign: 'center',
   },
@@ -235,63 +221,34 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   resendCode: {
-    // color: Color.BLUE,
+    color: DColor.white6,
     marginStart: 20,
     marginTop: 40,
   },
   resendCodeText: {
     marginStart: 20,
     marginTop: 40,
+    color: DColor.white6,
   },
   resendCodeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  btnLogin: {
+    backgroundColor: DColor.white6,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: DColor.white6,
+    textAlign: 'center',
+    marginTop: 30,
+  },
+  textBtnLogin: {
+    padding: 10,
+    color: DColor.white,
+    fontSize: Font.customFont.ft18,
+    textAlign: 'center',
+    fontFamily: Font.fontFamily.regular,
+  },
 });
 
 export default OtpScreen;
-// import {View, Text, TextInput, Button} from 'react-native';
-// import React, {useState, useEffect} from 'react';
-
-// import LoaderScreen from '../Loader';
-
-// const OtpScreen = ({navigation}) => {
-//   const [otp, setOtp] = useState('');
-//   const [isLoader, setIsLoader] = useState(false);
-
-// useEffect(() => {
-//   setTimeout(() => {
-//     navigation.navigate('Dashboard');
-//   }, 5000);
-// }, []);
-
-//   const handleSubmitOTp = () => {
-//     if (otp) {
-//       // setIsLoader(true);
-//       navigation.navigate('Dashboard');
-//       // if (otp == '1234') {
-//       //   alert('Welcome to Hero Sales App');
-//       //   navigation.navigate('Dashboard');
-//       // } else {
-//       //   alert('Invalid otp');
-//       // }
-//     } else {
-//       alert('please enter the received otp');
-//     }
-//   };
-
-//   return (
-//     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-//       <TextInput
-//         value={otp}
-//         placeholder={'Enter your Otp here'}
-//         onChangeText={value => setOtp(value)}
-//         maxLength={4}
-//       />
-//       <Button title="SUBMIT OTP" onPress={() => handleSubmitOTp()} />
-//       {/* {isLoader && <LoaderScreen />} */}
-//     </View>
-//   );
-// };
-
-// export default OtpScreen;

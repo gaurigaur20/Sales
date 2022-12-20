@@ -14,15 +14,8 @@ const CustomDrawer = props => {
   const url =
     'https://hmclmobdiag.blob.core.windows.net/uploads/tso/profile_sample.jpg';
 
-  const userData = useSelector((state, shallowEqual) =>
-    JSON.stringify(state.rootReducer.userLoginData),
-  );
-
-  const userId = JSON.parse(userData).user_id;
-  console.log('user Id', userId);
-
-  const handleLogOut = () => {
-    AsyncStorage.setItem('user', '');
+  const handleLogOut = async () => {
+   await AsyncStorage.removeItem('user');
     props.navigation.closeDrawer();
     props.navigation.navigate('Login');
   };
@@ -51,7 +44,7 @@ const CustomDrawer = props => {
             borderRadius: 100 / 2,
           }}
         />
-        <Text>{userId}</Text>
+        <Text>userId</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />

@@ -1,7 +1,8 @@
 import {combineReducers} from 'redux';
 
-import {userLoginData} from './reducer';
+import {userLoginData, forLoader} from './reducer';
 
 export default combineReducers({
   userLoginData,
+  forLoader,
 });

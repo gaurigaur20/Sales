@@ -49,7 +49,6 @@ import NewProspectScreen from './src/Prospect/Components/NewProspect';
 // ********************************* Hero Sure Component ********************
 import HeroTwoWheelerScreen from './src/HeroSure/Components/Hero2Wheeler';
 import NonHeroTwoWheelerScreen from './src/HeroSure/Components/Non-Hero2Wheeler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 const navigationRef = React.createRef();

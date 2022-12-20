@@ -55,7 +55,7 @@ const handleResponse = (responseJson, link, resolve, reject, isMultiple) => {
   }
 };
 
-export const post = async (link, data, isMultiple, navigation) =>
+export const post = async (link, data, navigation) =>
   new Promise(async (resolve, reject) => {
     const url = domainUrl;
     let headers = {
@@ -85,7 +85,7 @@ export const post = async (link, data, isMultiple, navigation) =>
       })
       .then(responseJson => {
         console.log('response Data', JSON.stringify(responseJson));
-        handleResponse(responseJson, link, resolve, reject, isMultiple);
+        handleResponse(responseJson, link, resolve, reject, data.isMultiple);
       })
       .catch(error => {
         if (__DEV__) {

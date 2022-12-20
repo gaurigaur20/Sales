@@ -4,6 +4,8 @@ import React, {useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SplashScreen = ({navigation}) => {
+  const PAS_KEY =
+    'BSuXZhrGbmR7c6UyKyHajfmGcT3g2T22PAB3CEnQp8Dpc95XvHZW3t5CJVtsZFBCNaGkcwZBCaSSKG4NBwzKeXYbh755aMJCdGEGuAx44ctzUYuCgL8ctZskf';
   useEffect(() => {
     getUserData();
   }, []);
@@ -11,24 +13,17 @@ const SplashScreen = ({navigation}) => {
   const getUserData = async () => {
     try {
       const userId = await AsyncStorage.getItem('user');
-      const key = await AsyncStorage.getItem('otp');
-      const data = {
-        userid: userId,
-        key: key,
-      };
-      console.log('async data', data);
-      if (data.userid == null && data.key == null) {
+      console.log('async data', userId);
+      if (userId == null) {
         navigation.replace('Login');
-      } else if (data.userid != null && data.key != null) {
+      } else if (userId != null) {
         navigation.replace('Dashboard');
-      }
-      else{
-        navigation.replace('Login')
       }
     } catch (error) {
       console.log('error', error);
     }
   };
+
   return <View style={{flex: 1, backgroundColor: 'transparent'}} />;
 };
 

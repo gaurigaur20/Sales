@@ -1,10 +1,25 @@
-import {View, Text, TextInput, Pressable, Button} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+} from 'react-native';
 import React, {useState} from 'react';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {showMessage} from 'react-native-flash-message';
+import Global from '../../global';
+import Font from '../../theme';
+import DColor from '../../theme/colors';
+const {ActualHeight, ActualWidth} = Global;
 
 import * as API from '../api/index';
+import Loader from '../Loader';
+
+import IMAGES from '../utils/images';
 
 const sendOtp = async (userID, navigation) => {
   const data = {
@@ -28,21 +43,21 @@ const sendOtp = async (userID, navigation) => {
       },
     },
   };
-
-  return API.post(link, requestData, isMultiple, navigation);
+  return API.post(link, requestData, navigation);
 };
 
 const LoginScreen = ({navigation}) => {
   const [userId, setuserId] = useState('');
+  const [isLoader, setIsLoader] = useState(false);
 
   const handleSendOTP = () => {
     if (userId) {
+      setIsLoader(true);
       sendOtp(userId, navigation)
         .then(responseData => {
+          setIsLoader(false);
           if (responseData.success === '1') {
             const user_id = responseData.login_id;
-            AsyncStorage.setItem('user', user_id);
-            setuserId(' ');
             showMessage({
               message: 'OTP sent',
               type: 'success',
@@ -59,7 +74,9 @@ const LoginScreen = ({navigation}) => {
             });
           }
         })
+
         .catch(errData => {
+          setIsLoader(false);
           console.log('Error while sending otp', errData);
           showMessage({
             message: errData.msg,
@@ -73,16 +90,90 @@ const LoginScreen = ({navigation}) => {
     }
   };
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <TextInput
-        value={userId}
-        placeholder={'Enter User Id'}
-        onChangeText={value => setuserId(value)}
-        maxLength={10}
-      />
-      <Button title="SEND OTP" onPress={() => handleSendOTP()} />
-    </View>
+    <ImageBackground
+      style={{
+        flex: 1,
+      }}
+      source={IMAGES.BACKGROUND_IMAGE}>
+      <View>
+        <Image
+          source={IMAGES.LOGIN_SCREEN_LOGO}
+          style={{
+            height: 250,
+            width: 400,
+            resizeMode: 'contain',
+          }}
+        />
+      </View>
+      <ScrollView>
+        <View style={Styles.loginMainBox}>
+          <View style={Styles.fieldContainer}>
+            <Image source={IMAGES.MOBILE_ICON} style={Styles.phoneIcon} />
+            <TextInput
+              value={userId}
+              placeholder={'Enter User Id'}
+              onChangeText={value => setuserId(value)}
+              style={Styles.textInput}
+            />
+          </View>
+          {/* <Button title="SEND OTP" onPress={() => handleSendOTP()} /> */}
+          <Pressable onPress={() => handleSendOTP()} style={Styles.btnLogin}>
+            <Text style={Styles.textBtnLogin}>SEND OTP</Text>
+          </Pressable>
+        </View>
+      </ScrollView>
+      {isLoader && <Loader />}
+    </ImageBackground>
   );
 };
 
 export default LoginScreen;
+
+const Styles = StyleSheet.create({
+  loginMainBox: {
+    borderRadius: 20,
+    margin: 20,
+    backgroundColor: DColor.white,
+    padding: 25,
+    height: 350,
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+
+  fieldContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: ActualWidth(277.1),
+    backgroundColor: DColor.black_4947,
+    borderRadius: ActualHeight(16),
+    paddingLeft: ActualWidth(10.8),
+  },
+  phoneIcon: {
+    height: ActualHeight(22.0),
+    width: ActualWidth(13.5),
+    resizeMode: 'contain',
+    marginRight: ActualWidth(14.9),
+  },
+
+  textInput: {
+    fontFamily: Font.fontFamily.regularCal,
+    fontSize: Font.customFont.ft16,
+    color: DColor.white,
+    flex: 1,
+  },
+  btnLogin: {
+    backgroundColor: DColor.red,
+    borderRadius: ActualHeight(16),
+    borderWidth: 1,
+    borderColor: DColor.red,
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  textBtnLogin: {
+    padding: 10,
+    color: DColor.white,
+    fontSize: Font.customFont.ft18,
+    textAlign: 'center',
+    fontFamily: Font.fontFamily.regular,
+  },
+});

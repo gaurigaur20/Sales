@@ -18,7 +18,7 @@ import CircularsScreen from '../Circulars';
 import ContactUsScreen from '../CONTACT US';
 import ShareFeedbackScreen from '../SHARE FEEDBACK';
 
-import CustomDrawer from '../CustomDrawer.js';
+import CustomDrawer from '../CustomDrawer.js/index.js';
 
 const Drawer = createDrawerNavigator();
 
