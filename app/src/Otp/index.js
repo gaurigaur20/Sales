@@ -186,7 +186,8 @@ export const styles = StyleSheet.create({
   },
   otpMainBox: {
     height: ActualHeight(333.3612),
-    // backgroundColor: DColor.black,
+    backgroundColor: DColor.gray,
+    borderRadius: ActualWidth(16),
     padding: 15,
   },
   title: {
