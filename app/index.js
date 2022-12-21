@@ -71,7 +71,7 @@ const Navigator = () => {
     return true;
   };
   const backAction = () => {
-    Alert.alert('Hold on!', 'Are you sure you want to go back?', [
+    Alert.alert('Exit', 'Are you sure you want to exit?', [
       {
         text: 'Cancel',
         onPress: () => null,

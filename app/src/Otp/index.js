@@ -7,6 +7,7 @@ import {
   Button,
   StyleSheet,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import {
   CodeField,
@@ -19,8 +20,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {verifyOtpAction} from '../redux/action';
 import Loader from '../Loader';
 
+import Global from '../../global';
 import Font from '../../theme';
 import DColor from '../../theme/colors';
+const {ActualHeight, ActualWidth} = Global;
 
 import IMAGES from '../utils/images';
 
@@ -132,42 +135,44 @@ const OtpScreen = ({navigation, route}) => {
 
   return (
     <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={styles.root}>
-      <Text style={styles.title}>Please enter OTP</Text>
-      <CodeField
-        ref={ref}
-        {...props}
-        value={value}
-        onChangeText={setValue}
-        cellCount={CELL_COUNT}
-        rootStyle={styles.codeFieldRoot}
-        keyboardType="number-pad"
-        textContentType="oneTimeCode"
-        renderCell={({index, symbol, isFocused}) => (
-          <View
-            onLayout={getCellOnLayoutHandler(index)}
-            key={index}
-            style={[styles.cellRoot, isFocused && styles.focusCell]}>
-            <Text style={styles.cellText}>
-              {symbol || (isFocused ? <Cursor /> : null)}
-            </Text>
-          </View>
+      <View style={styles.otpMainBox}>
+        <Text style={styles.title}>Please enter OTP</Text>
+        <CodeField
+          ref={ref}
+          {...props}
+          value={value}
+          onChangeText={setValue}
+          cellCount={CELL_COUNT}
+          rootStyle={styles.codeFieldRoot}
+          keyboardType="number-pad"
+          textContentType="oneTimeCode"
+          renderCell={({index, symbol, isFocused}) => (
+            <View
+              onLayout={getCellOnLayoutHandler(index)}
+              key={index}
+              style={[styles.cellRoot, isFocused && styles.focusCell]}>
+              <Text style={styles.cellText}>
+                {symbol || (isFocused ? <Cursor /> : null)}
+              </Text>
+            </View>
+          )}
+        />
+        {/* View for resend otp  */}
+        {resendButtonDisabledTime > 0 ? (
+          <Text style={styles.resendCodeText}>
+            Resend OTP in {resendButtonDisabledTime} sec
+          </Text>
+        ) : (
+          <Pressable onPress={onResendOtpButtonPress}>
+            <View style={styles.resendCodeContainer}>
+              <Text style={styles.resendCode}> Resend Code</Text>
+            </View>
+          </Pressable>
         )}
-      />
-      {/* View for resend otp  */}
-      {resendButtonDisabledTime > 0 ? (
-        <Text style={styles.resendCodeText}>
-          Resend OTP in {resendButtonDisabledTime} sec
-        </Text>
-      ) : (
-        <Pressable onPress={onResendOtpButtonPress}>
-          <View style={styles.resendCodeContainer}>
-            <Text style={styles.resendCode}> Resend Code</Text>
-          </View>
+        <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
+          <Text style={styles.textBtnLogin}>Submit OTP</Text>
         </Pressable>
-      )}
-      <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
-        <Text style={styles.textBtnLogin}>Submit OTP</Text>
-      </Pressable>
+      </View>
       {isLoader && <Loader />}
     </ImageBackground>
   );
@@ -177,8 +182,12 @@ export const styles = StyleSheet.create({
   root: {
     flex: 1,
     padding: 20,
-    alignContent: 'center',
     justifyContent: 'center',
+  },
+  otpMainBox: {
+    height: ActualHeight(333.3612),
+    // backgroundColor: DColor.black,
+    padding: 15,
   },
   title: {
     textAlign: 'left',

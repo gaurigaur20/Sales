@@ -45,6 +45,7 @@ function* verifyOtpSaga(_data) {
           type: 'success',
           autoHide: 'true',
           duration: 1000,
+          position: 'bottom',
         });
       }
 
@@ -74,6 +75,7 @@ function* verifyOtpSaga(_data) {
         type: 'danger',
         autoHide: 'true',
         duration: 1000,
+        position: 'bottom',
       });
     }
   } catch (error) {
@@ -85,6 +87,7 @@ function* verifyOtpSaga(_data) {
       type: 'danger',
       autoHide: 'true',
       duration: 1000,
+      position: 'bottom',
     });
   }
 }

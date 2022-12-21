@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Pressable,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -63,6 +64,7 @@ const LoginScreen = ({navigation}) => {
               type: 'success',
               autoHide: 'true',
               duration: 1000,
+              position: 'bottom',
             });
             navigation.navigate('Otp', {user_id});
           } else {
@@ -71,6 +73,7 @@ const LoginScreen = ({navigation}) => {
               type: 'danger',
               autoHide: 'true',
               duration: 1000,
+              position: 'bottom',
             });
           }
         })
@@ -83,6 +86,7 @@ const LoginScreen = ({navigation}) => {
             type: 'danger',
             autoHide: 'true',
             duration: 1000,
+            position: 'bottom',
           });
         });
     } else {
@@ -131,11 +135,11 @@ export default LoginScreen;
 
 const Styles = StyleSheet.create({
   loginMainBox: {
-    borderRadius: 20,
-    margin: 20,
-    backgroundColor: DColor.white,
-    padding: 25,
-    height: 350,
+    height: ActualHeight(228.3612),
+    // backgroundColor: DColor.white,
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 15,
     alignContent: 'center',
     justifyContent: 'center',
   },
@@ -143,10 +147,13 @@ const Styles = StyleSheet.create({
   fieldContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    width: ActualWidth(277.1),
+    width: ActualWidth(310.1),
+    height: ActualHeight(44.0),
     backgroundColor: DColor.black_4947,
     borderRadius: ActualHeight(16),
     paddingLeft: ActualWidth(10.8),
+    // borderWidth: 1,
+    // borderColor: DColor.white6,
   },
   phoneIcon: {
     height: ActualHeight(22.0),
@@ -163,11 +170,13 @@ const Styles = StyleSheet.create({
   },
   btnLogin: {
     backgroundColor: DColor.red,
+    width: ActualWidth(310.1),
     borderRadius: ActualHeight(16),
     borderWidth: 1,
-    borderColor: DColor.red,
+    borderColor: DColor.white6,
     textAlign: 'center',
     marginTop: 10,
+    height: ActualHeight(44.0),
   },
   textBtnLogin: {
     padding: 10,

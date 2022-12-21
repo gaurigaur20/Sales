@@ -8,20 +8,21 @@ import {
 } from '@react-navigation/drawer';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useSelector} from 'react-redux';
+import SharedManager from '../utils/SharedManager';
 
 const CustomDrawer = props => {
   const url =
     'https://hmclmobdiag.blob.core.windows.net/uploads/tso/profile_sample.jpg';
+  const user = SharedManager.getInstance().getUser().login_id;
 
   const handleLogOut = async () => {
-   await AsyncStorage.removeItem('user');
+    await AsyncStorage.removeItem('user');
     props.navigation.closeDrawer();
     props.navigation.navigate('Login');
   };
 
   const logOut = () => {
-    Alert.alert('Hold on!', 'Are you sure you want to log out?', [
+    Alert.alert('Logout', 'Are you sure you want to log out?', [
       {
         text: 'Cancel',
         onPress: () => null,
@@ -44,7 +45,7 @@ const CustomDrawer = props => {
             borderRadius: 100 / 2,
           }}
         />
-        <Text>userId</Text>
+        <Text>{user}</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
