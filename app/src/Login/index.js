@@ -136,7 +136,8 @@ export default LoginScreen;
 const Styles = StyleSheet.create({
   loginMainBox: {
     height: ActualHeight(228.3612),
-    // backgroundColor: DColor.white,
+    backgroundColor: DColor.white,
+    borderRadius: ActualWidth(16),
     marginLeft: 15,
     marginRight: 15,
     padding: 15,
@@ -149,11 +150,11 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     width: ActualWidth(310.1),
     height: ActualHeight(44.0),
-    backgroundColor: DColor.black_4947,
-    borderRadius: ActualHeight(16),
+    backgroundColor: DColor.lightGray,
+    borderRadius: ActualHeight(5),
     paddingLeft: ActualWidth(10.8),
     // borderWidth: 1,
-    // borderColor: DColor.white6,
+    borderColor: DColor.lightGray,
   },
   phoneIcon: {
     height: ActualHeight(22.0),
@@ -165,17 +166,17 @@ const Styles = StyleSheet.create({
   textInput: {
     fontFamily: Font.fontFamily.regularCal,
     fontSize: Font.customFont.ft16,
-    color: DColor.white,
+    color: DColor.black,
     flex: 1,
   },
   btnLogin: {
-    backgroundColor: DColor.red,
+    backgroundColor: DColor.appColor,
     width: ActualWidth(310.1),
-    borderRadius: ActualHeight(16),
+    borderRadius: ActualHeight(5),
     borderWidth: 1,
-    borderColor: DColor.white6,
+    borderColor: DColor.lightGray,
     textAlign: 'center',
-    marginTop: 10,
+    marginTop: 20,
     height: ActualHeight(44.0),
   },
   textBtnLogin: {

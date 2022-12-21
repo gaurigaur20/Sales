@@ -2,8 +2,8 @@ import {put, takeLatest} from 'redux-saga/effects';
 import {VERIFY_OTP, USER_DATA} from './actionTypes';
 import SharedManager from '../utils/SharedManager';
 import {showMessage} from 'react-native-flash-message';
-import crypto from 'crypto-js';
-// import base64 from 'react-native-base64';
+import crypto from 'react-native-crypto-js';
+import base64 from 'react-native-base64';
 import * as API from '../api';
 
 import {getLoaderAction} from './action';
@@ -25,7 +25,7 @@ function* verifyOtpSaga(_data) {
     let res = {};
 
     if (realData.isLogin) {
-      res = realData.requestData;
+      res = realData.data;
       console.log('res', res);
     } else {
       res = yield API.post(
@@ -49,20 +49,20 @@ function* verifyOtpSaga(_data) {
         });
       }
 
-      // let tokentemp = res.token + '::' + res.login_id + '::B2B';
-      // tokentemp = 'Basic ' + base64.encode(tokentemp);
+      let tokentemp = res.token + '::' + res.login_id + '::B2B';
+      tokentemp = 'Basic ' + base64.encode(tokentemp);
 
-      // SharedManager.getInstance().setToken(tokentemp);
+      SharedManager.getInstance().setToken(tokentemp);
       SharedManager.getInstance().setUser(res);
-      // let encData = crypto.AES.encrypt(
-      //   JSON.stringify({res}),
-      //   PAS_KEY,
-      // ).toString();
-      // console.log('encData', encData);
-      // // console.log('res', res);
-      // yield AsyncStorage.setItem('user', encData);
+      let encData = crypto.AES.encrypt(
+        JSON.stringify({res}),
+        PAS_KEY,
+      ).toString();
+      console.log('encData', encData);
+      console.log('encData', encData);
+      yield AsyncStorage.setItem('user', encData);
 
-      yield AsyncStorage.setItem('user', res.login_id);
+      // yield AsyncStorage.setItem('user', res.login_id);
       yield put({type: USER_DATA, res});
 
       realData.navigation.navigate('Dashboard');
