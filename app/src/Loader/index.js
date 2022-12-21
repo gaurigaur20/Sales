@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect, useRef} from 'react';
 import {StyleSheet, View, Text, Animated, Easing} from 'react-native';
 import LottieView from 'lottie-react-native';
@@ -35,6 +36,8 @@ const styles = StyleSheet.create({
   },
 });
 
+=======
+>>>>>>> 6a4e618a23c36e2daed2a48071770fe3b33fb1ae
 // import React, {useState} from 'react';
 
 // import {
@@ -52,6 +55,7 @@ const styles = StyleSheet.create({
 //     <View style={styles.container}>
 //       <BallIndicator />
 //       {Keyboard.dismiss()}
+<<<<<<< HEAD
 //     </View>
 //   );
 // };
@@ -70,3 +74,77 @@ const styles = StyleSheet.create({
 //     backgroundColor: 'rgba(0,0,0,0.5)',
 //   },
 // });
+=======
+//     </View>
+//   );
+// };
+
+// export default Loader;
+
+// const styles = StyleSheet.create({
+//   container: {
+//     top: 0,
+//     bottom: 0,
+//     right: 0,
+//     left: 0,
+//     position: 'absolute',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     backgroundColor: 'rgba(0,0,0,0.5)',
+//   },
+// });
+
+import React, {useState, useEffect, useRef} from 'react';
+import {StyleSheet, View, Text, Animated, Easing} from 'react-native';
+import LottieView from 'lottie-react-native';
+
+const Loader = () => {
+  const animationProgress = useRef(new Animated.Value(0));
+
+  useEffect(() => {
+    Animated.timing(animationProgress.current, {
+      toValue: 1,
+      duration: 50000,
+      easing: Easing.linear,
+      useNativeDriver: false,
+    }).start();
+  }, []);
+
+  return (
+    <LottieView
+      autoPlay
+      // loop={loop}
+      source={require('../../assets/loader2.json')}
+      style={styles.animation}
+      speed={4}
+      loop
+      // progress={animationProgress.current}
+    />
+  );
+};
+export default Loader;
+//   return (
+//     <View>
+//       <LottieView
+//         source={require('../../assets/loader2.json')}
+//         style={styles.animation}
+//         autoPlay
+//       />
+//     </View>
+//   );
+// };
+const styles = StyleSheet.create({
+  animation: {
+    // width: 100,
+    // height: 100,
+    // top: 0,
+    // bottom: 0,
+    // right: 0,
+    // left: 0,
+    // position: 'absolute',
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+});
+>>>>>>> 6a4e618a23c36e2daed2a48071770fe3b33fb1ae

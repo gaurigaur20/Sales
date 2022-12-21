@@ -35,6 +35,11 @@ const SplashScreen = ({navigation}) => {
       const dataBlob = JSON.parse(decData);
 
       if (dataBlob) {
+<<<<<<< HEAD
+=======
+        // props.navigation.navigate('Drawer')
+
+>>>>>>> 6a4e618a23c36e2daed2a48071770fe3b33fb1ae
         let data = dataBlob.res;
         dispatch(
           verifyOtpAction({
