@@ -165,13 +165,20 @@ const OtpScreen = ({navigation, route}) => {
         ) : (
           <Pressable onPress={onResendOtpButtonPress}>
             <View style={styles.resendCodeContainer}>
-              <Text style={styles.resendCode}> Resend Code</Text>
+              <Text style={styles.resendCode}> Resend OTP</Text>
             </View>
           </Pressable>
         )}
-        <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
+        {/* <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
           <Text style={styles.textBtnLogin}>Submit OTP</Text>
-        </Pressable>
+        </Pressable> */}
+        <View style={{margin: 20}}>
+          <Button
+            onPress={() => handleOnSubmit()}
+            title="Submit OTP"
+            color={DColor.appColor}
+          />
+        </View>
       </View>
       {isLoader && <Loader />}
     </ImageBackground>
@@ -185,15 +192,15 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   otpMainBox: {
-    height: ActualHeight(333.3612),
-    backgroundColor: DColor.gray,
+    height: ActualHeight(273.3612),
+    backgroundColor: DColor.white,
     borderRadius: ActualWidth(16),
     padding: 15,
   },
   title: {
     textAlign: 'left',
     fontSize: 20,
-    color: DColor.white6,
+    color: DColor.gray,
     marginStart: 20,
     fontWeight: 'bold',
   },
@@ -218,7 +225,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   cellText: {
-    color: DColor.white6,
+    color: DColor.gray,
     fontSize: 28,
     textAlign: 'center',
   },
@@ -231,21 +238,21 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   resendCode: {
-    color: DColor.white6,
+    color: DColor.gray,
     marginStart: 20,
     marginTop: 40,
   },
   resendCodeText: {
     marginStart: 20,
     marginTop: 40,
-    color: DColor.white6,
+    color: DColor.gray,
   },
   resendCodeContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   btnLogin: {
-    backgroundColor: DColor.white6,
+    backgroundColor: DColor.appColor,
     borderRadius: 5,
     borderWidth: 1,
     borderColor: DColor.white6,

@@ -8,8 +8,11 @@ import {
   Pressable,
   ScrollView,
   Dimensions,
+  Button,
 } from 'react-native';
 import React, {useState} from 'react';
+
+import NetInfo from '@react-native-community/netinfo';
 
 import {showMessage} from 'react-native-flash-message';
 import Global from '../../global';
@@ -19,6 +22,8 @@ const {ActualHeight, ActualWidth} = Global;
 
 import * as API from '../api/index';
 import Loader from '../Loader';
+
+import NoInternet from '../NoInternet';
 
 import IMAGES from '../utils/images';
 
@@ -52,6 +57,21 @@ const LoginScreen = ({navigation}) => {
   const [isLoader, setIsLoader] = useState(false);
 
   const handleSendOTP = () => {
+    NetInfo.fetch().then(state => {
+      console.log('Is connected?', state.isConnected);
+      if (state.isConnected) {
+        getOTP();
+      } else {
+        showMessage({
+          message: 'no internet',
+          type: 'danger',
+          position: 'bottom',
+        });
+      }
+    });
+  };
+
+  const getOTP = () => {
     if (userId) {
       setIsLoader(true);
       sendOtp(userId, navigation)
@@ -82,7 +102,8 @@ const LoginScreen = ({navigation}) => {
           setIsLoader(false);
           console.log('Error while sending otp', errData);
           showMessage({
-            message: errData.msg,
+            message:
+              'Network request failed, please check your internet connection',
             type: 'danger',
             autoHide: 'true',
             duration: 1000,
@@ -121,9 +142,20 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           {/* <Button title="SEND OTP" onPress={() => handleSendOTP()} /> */}
-          <Pressable onPress={() => handleSendOTP()} style={Styles.btnLogin}>
-            <Text style={Styles.textBtnLogin}>SEND OTP</Text>
-          </Pressable>
+          <View
+            style={{
+              width: ActualWidth(210.1),
+              margin: 20,
+              // justifyContent: 'center',
+              alignSelf: 'center',
+            }}>
+            <Button
+              onPress={() => handleSendOTP()}
+              title="SEND OTP"
+              color={DColor.appColor}>
+              {/* <Text style={Styles.textBtnLogin}>SEND OTP</Text> */}
+            </Button>
+          </View>
         </View>
       </ScrollView>
       {isLoader && <Loader />}
@@ -147,7 +179,7 @@ const Styles = StyleSheet.create({
 
   fieldContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignSelf: 'center',
     width: ActualWidth(310.1),
     height: ActualHeight(44.0),
     backgroundColor: DColor.lightGray,
@@ -161,6 +193,7 @@ const Styles = StyleSheet.create({
     width: ActualWidth(13.5),
     resizeMode: 'contain',
     marginRight: ActualWidth(14.9),
+    alignSelf: 'center',
   },
 
   textInput: {
