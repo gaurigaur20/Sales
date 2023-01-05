@@ -24,7 +24,11 @@ const ProspectScreen = ({navigation}) => {
     return (
       <>
         <Pressable onPress={onPress} style={Styles.pressable}>
-          <Icon name={name} onPress={onPress} style={Styles.icon}></Icon>
+          <Icon
+            name={name}
+            onPress={onPress}
+            style={Styles.icon}
+            size={40}></Icon>
           <Text style={Styles.text}>{text}</Text>
         </Pressable>
       </>
@@ -32,48 +36,48 @@ const ProspectScreen = ({navigation}) => {
   };
   return (
     <>
-      <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={Styles.root}>
-        <View style={Styles.myIcon}>
-          <MyIcon
-            name="bicycle-outline"
-            text="Today's Followup"
-            onPress={() => navigation.navigate('Todays FollowupProspect')}
-          />
-          <MyIcon
-            name="call"
-            text="Pending Followup"
-            onPress={() => navigation.navigate('Pending FollowupProspect')}
-          />
-          <MyIcon
-            name="call"
-            text="New Prospect"
-            onPress={() => navigation.navigate('New Prospect')}
-          />
-        </View>
-        <View style={Styles.fieldContainer}>
-          <TextInput
-            value={mobileNumber}
-            placeholder={'Mobile/Phone'}
-            onChangeText={value => setMobileNumber(value)}
-            maxLength={10}
-            keyboardType="number-pad"
-            style={Styles.textInput}
-          />
-          {/* <Pressable onPress={() => alert('coming soon!')}>
-            <Text>SEARCH PROSPECT</Text>
-          </Pressable> */}
-          <View
-            style={{
-              width: ActualWidth(210.1),
-              margin: 5,
-              // justifyContent: 'center',
-              alignSelf: 'center',
-            }}>
-            <Button
-              title="SEARCH PROSPECT"
-              color={DColor.appColor}
-              onPress={() => navigation.navigate('Prospect List')}
+      <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
+        <View style={Styles.mainContainer}>
+          <View style={Styles.IconContainer}>
+            <View style={Styles.iconRow1}>
+              <MyIcon
+                name="bicycle-outline"
+                text="Today's Followup"
+                onPress={() => navigation.navigate('Todays FollowupProspect')}
+              />
+              <MyIcon
+                name="call"
+                text="Pending Followup"
+                onPress={() => navigation.navigate('Pending FollowupProspect')}
+              />
+              <MyIcon
+                name="call"
+                text="New Prospect"
+                onPress={() => navigation.navigate('New Prospect')}
+              />
+            </View>
+          </View>
+
+          <View style={Styles.fieldContainer}>
+            <TextInput
+              value={mobileNumber}
+              placeholder={'Mobile/Phone'}
+              onChangeText={value => setMobileNumber(value)}
+              maxLength={10}
+              keyboardType="number-pad"
+              style={Styles.textInput}
             />
+            <View
+              style={{
+                width: ActualWidth(150.1),
+                margin: 5,
+              }}>
+              <Button
+                title="SEARCH PROSPECT"
+                color={DColor.appColor}
+                onPress={() => navigation.navigate('Prospect List')}
+              />
+            </View>
           </View>
         </View>
       </ImageBackground>
@@ -84,51 +88,49 @@ const ProspectScreen = ({navigation}) => {
 export default ProspectScreen;
 
 const Styles = StyleSheet.create({
-  root: {
+  mainContainer: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    margin: 10,
   },
-  pressable: {
-    justifyContent: 'center',
+  IconContainer: {
+    flex: 1,
     alignItems: 'center',
-    marginRight: '10%',
-    marginLeft: '10%',
+    // justifyContent: 'center',
+    margin: 20,
+  },
+  iconRow1: {
+    flexDirection: 'row',
+  },
+
+  pressable: {
+    margin: 5,
+    alignItems: 'center',
   },
   icon: {
-    fontSize: 50,
-    // backgroundColor: DColor,
-    // height: 70,
-    // width: 70,
-    // borderRadius: 100 / 2,
-    // width: ActualWidth(310.1),
-    borderRadius: ActualHeight(16),
-    borderWidth: 1,
-    // borderColor: DColor.appColor,
+    borderRadius: ActualHeight(50),
+    // borderWidth: 2,
+    color: DColor.white,
+    padding: 10,
     textAlign: 'center',
-    marginTop: 20,
-    height: ActualHeight(44.0),
+    backgroundColor: DColor.red,
   },
   text: {
-    fontSize: 12,
-    marginTop: '5%',
+    color: DColor.white,
+    textAlign: 'center',
   },
   myIcon: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   fieldContainer: {
-    height: ActualHeight(338.3612),
-    // backgroundColor: DColor.white,
+    flex: 1,
+    // backgroundColor: 'white',
+    alignItems: 'center',
     borderRadius: ActualWidth(16),
-    // marginLeft: 15,
-    // marginRight: 15,
     padding: 15,
-    alignContent: 'center',
-    justifyContent: 'center',
   },
   textInput: {
-    // width: ActualWidth(310.1),
+    width: ActualWidth(310.1),
     height: ActualHeight(44.0),
     backgroundColor: DColor.lightGray,
     borderRadius: ActualHeight(5),

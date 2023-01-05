@@ -22,8 +22,8 @@ const HeroSureScreen = ({navigation}) => {
   };
 
   return (
-    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={Styles.root}>
-      <View style={Styles.myIcon}>
+    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
+      <View style={Styles.mainContainer}>
         <MyIcon
           name="bicycle-outline"
           text="Hero 2 Wheeler"
@@ -42,37 +42,27 @@ const HeroSureScreen = ({navigation}) => {
 export default HeroSureScreen;
 
 const Styles = StyleSheet.create({
-  root: {
+  mainContainer: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    margin: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
   pressable: {
-    justifyContent: 'center',
     alignItems: 'center',
-    marginRight: '10%',
-    marginLeft: '10%',
+    margin: 30,
   },
   icon: {
-    fontSize: 50,
-    // backgroundColor: DColor,
-    // height: 70,
-    // width: 70,
-    // borderRadius: 100 / 2,
-    // width: ActualWidth(310.1),
-    borderRadius: ActualHeight(16),
-    borderWidth: 1,
-    // borderColor: DColor.appColor,
+    fontSize: 40,
+    backgroundColor: DColor.red,
+    borderRadius: ActualHeight(50),
+
+    color: DColor.white,
     textAlign: 'center',
-    marginTop: 20,
-    height: ActualHeight(44.0),
+    padding: 10,
   },
   text: {
-    fontSize: 12,
-    marginTop: '5%',
-  },
-  myIcon: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    // fontSize: 12,
+    color: DColor.white,
   },
 });

@@ -25,15 +25,7 @@ const MyIcon = ({name, onPress, text}) => {
       <Icon
         name={name}
         onPress={onPress}
-        style={{
-          borderRadius: ActualHeight(50),
-          borderWidth: 3,
-          padding: 10,
-          // alignItems: 'center',
-          alignSelf: 'center',
-          borderColor: DColor.white,
-          // backgroundColor: 'red',
-        }}
+        style={Styles.icon}
         color={DColor.white}
         size={40}></Icon>
       <Text style={Styles.text}>{text}</Text>
@@ -73,76 +65,79 @@ const EnquiryScreen = ({navigation}) => {
           textAlign: 'center',
           margin: 30,
           color: DColor.white,
-          fontSize: 16,
+          // fontSize: 16,
+          fontWeight: 'bold',
         }}>
         To see enquiries you need to search for mobile or registration number.
       </Text>
-      <View style={Styles.myIcon}>
-        <MyIcon
-          name="bicycle-outline"
-          onPress={() => navigation.navigate('Recent Orders')}
-          text="Recent Orders"
-        />
-        <MyIcon
-          name="call"
-          text="Today's Followup"
-          onPress={() => downloadApp()}
-        />
-        <MyIcon
-          name="call"
-          text="Pending Followup"
-          onPress={() => downloadApp()}
-        />
-      </View>
-      <View style={Styles.myIcon}>
-        <MyIcon
-          name="folder-open-outline"
-          text="Search Enquiry"
-          onPress={() => downloadApp()}
-        />
-        <MyIcon
-          name="home-outline"
-          text="Exchange Details"
-          onPress={() => navigation.navigate('Exchange Details')}
-        />
-        <MyIcon
-          name="location-outline"
-          text="Failed Enquiry"
-          onPress={() => navigation.navigate('Failed Enquiry')}
-        />
-      </View>
-      <View style={Styles.myIcon}>
-        <MyIcon
-          name="bicycle-outline"
-          text="Customer Interaction"
-          onPress={() => navigation.navigate('Customer Interaction')}
-        />
-      </View>
-      <View style={Styles.fieldContainer}>
-        <TextInput
-          value={mobileNumber}
-          placeholder={'Mobile/Registration Number'}
-          onChangeText={value => setMobileNumber(value)}
-          style={Styles.textInput}
-          keyboardType="number-pad"
-          maxLength={10}
-        />
-        {/* <Pressable onPress={() => alert('coming soon!')}>
-        <Text>NEXT</Text>
-      </Pressable> */}
-        <View
-          style={{
-            width: ActualWidth(210.1),
-            margin: 5,
-            // justifyContent: 'center',
-            alignSelf: 'center',
-          }}>
-          <Button
-            title="NEXT"
-            onPress={() => handleOnSubmit()}
-            color={DColor.appColor}
-            mobileNumber={mobileNumber}
-          />
+      <View style={Styles.mainContainer}>
+        <View style={Styles.IconContainer}>
+          <View style={Styles.iconRow1}>
+            <MyIcon
+              name="bicycle-outline"
+              onPress={() => navigation.navigate('Recent Orders')}
+              text="Recent Orders"
+            />
+            <MyIcon
+              name="call"
+              text="Today's Followup"
+              onPress={() => downloadApp()}
+            />
+            <MyIcon
+              name="call"
+              text="Pending Followup"
+              onPress={() => downloadApp()}
+            />
+          </View>
+          <View style={Styles.iconRow2}>
+            <MyIcon
+              name="folder-open-outline"
+              text="Search Enquiry"
+              onPress={() => downloadApp()}
+            />
+            <MyIcon
+              name="home-outline"
+              text="Exchange Details"
+              onPress={() => navigation.navigate('Exchange Details')}
+            />
+            <MyIcon
+              name="location-outline"
+              text="Failed Enquiry"
+              onPress={() => navigation.navigate('Failed Enquiry')}
+            />
+          </View>
+          <View style={Styles.iconRow3}>
+            <MyIcon
+              name="bicycle-outline"
+              text="Customer Interaction"
+              onPress={() => navigation.navigate('Customer Interaction')}
+            />
+          </View>
+
+          <View style={Styles.fieldContainer}>
+            <TextInput
+              value={mobileNumber}
+              placeholder={'Mobile/Registration Number'}
+              onChangeText={value => setMobileNumber(value)}
+              style={Styles.textInput}
+              keyboardType="number-pad"
+              maxLength={10}
+            />
+            <View
+              style={{
+                width: ActualWidth(150),
+                margin: 10,
+                // // justifyContent: 'center',
+                // alignSelf: 'center',
+              }}>
+              <Button
+                title="NEXT"
+                onPress={() => handleOnSubmit()}
+                color={DColor.appColor}
+                mobileNumber={mobileNumber}
+              />
+            </View>
+          </View>
         </View>
       </View>
     </ImageBackground>
@@ -152,57 +147,55 @@ const EnquiryScreen = ({navigation}) => {
 export default EnquiryScreen;
 
 const Styles = StyleSheet.create({
-  root: {
+  mainContainer: {
+    flex: 1,
+    margin: 4,
+  },
+  IconContainer: {
     flex: 1,
     // alignItems: 'center',
-    // justifyContent: 'center',
+  },
+  iconRow1: {
+    flexDirection: 'row',
+  },
+  iconRow2: {
+    flexDirection: 'row',
+  },
+  iconRow3: {
+    // flex: 0.3,
+    // alignItems: 'flex-start',
+    flexDirection: 'row',
   },
   pressable: {
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // marginRight: '10%',
-    // marginLeft: '10%',
-    // backgroundColor: 'yellow',
-    margin: 20,
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    margin: 5,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   icon: {
-    // borderColor: DColor.white,
-    padding: 5,
-    backgroundColor: DColor.red,
-    // height: 70,
-    // width: 70,
-    // borderRadius: 100 / 2,
-    // width: ActualWidth(310.1),
     borderRadius: ActualHeight(50),
     // borderWidth: 2,
-    // borderColor: DColor.appColor,
+    padding: 10,
     textAlign: 'center',
-    marginTop: 20,
-    height: ActualHeight(44.0),
+    backgroundColor: DColor.red,
   },
   text: {
-    fontSize: 12,
-    marginTop: '5%',
     color: DColor.white,
+    textAlign: 'center',
   },
   myIcon: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
   fieldContainer: {
-    // height: ActualHeight(228.3612),
-    // backgroundColor: DColor.white,
+    // backgroundColor: 'white',
+    alignItems: 'center',
+    flex: 1,
     borderRadius: ActualWidth(16),
-    // marginLeft: 15,
-    // marginRight: 15,
     padding: 15,
-    alignContent: 'center',
-    justifyContent: 'center',
   },
   textInput: {
-    // width: ActualWidth(310.1),
+    width: ActualWidth(310.1),
     height: ActualHeight(44.0),
     backgroundColor: DColor.lightGray,
     borderRadius: ActualHeight(5),
