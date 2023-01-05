@@ -40,15 +40,29 @@ import SearchEnquiryScreen from './src/Enquiry/Components/SearchEnquiry';
 import FailedEnquiryScreen from './src/Enquiry/Components/FailedEnquiry';
 import ExchangeDetailsScreen from './src/Enquiry/Components/ExchangeDetails';
 import CutomerInteractionScreen from './src/Enquiry/Components/CustomerInteraction';
+import ContactScreen from './src/Enquiry/Components/Contact';
+import AddEnquiryScreen from './src/Enquiry/Components/AddEnquiry';
+import PreSubmitEnquiryDetailScreen from './src/Enquiry/Components/PreSubmitEnquiryDetail';
+import CloseEnquiryScreen from './src/Enquiry/Components/CloseEnquiry';
+import FollowupEnquiryScreen from './src/Enquiry/Components/FollowupEnquiry';
+import EditEnquiryScreen from './src/Enquiry/Components/EditEnquiry';
+import TestrideFeedbackScreen from './src/Enquiry/Components/TestrideFeedback';
+import ExchangeVehicleScreen from './src/Enquiry/Components/ExchangeVehicle';
+import PrintInvoiceScreen from './src/Enquiry/Components/PrintInvoice';
+import GenerateEnquiryScreen from './src/Enquiry/Components/GenerateEnquiry';
 
 // ********************** Prospect Component *********************
 import TodaysFollowupPScreen from './src/Prospect/Components/TodaysFollowup';
 import PendingFollowupPScreen from './src/Prospect/Components/PendingFollowup';
 import NewProspectScreen from './src/Prospect/Components/NewProspect';
+import ProspectListScreen from './src/Prospect/Components/ProspectList';
 
 // ********************************* Hero Sure Component ********************
 import HeroTwoWheelerScreen from './src/HeroSure/Components/Hero2Wheeler';
 import NonHeroTwoWheelerScreen from './src/HeroSure/Components/Non-Hero2Wheeler';
+import ContactDetailsScreen from './src/Enquiry/Components/ContactDetails';
+import ProspectDetailsScreen from './src/Prospect/Components/ProspectDetails';
+import EditProspectScreen from './src/Prospect/Components/EditProspect';
 
 const Stack = createNativeStackNavigator();
 const navigationRef = React.createRef();
@@ -160,6 +174,37 @@ const Navigator = () => {
           component={CutomerInteractionScreen}
         />
 
+        <Stack.Screen name="Contact" component={ContactScreen} />
+        <Stack.Screen name="Add Enquiry" component={AddEnquiryScreen} />
+        <Stack.Screen
+          name="ENQUIRY DETAIL"
+          component={PreSubmitEnquiryDetailScreen}
+        />
+        <Stack.Screen name="CLOSE ENQUIRY" component={CloseEnquiryScreen} />
+        <Stack.Screen
+          name="FOLLOWUP ENQUIRY"
+          component={FollowupEnquiryScreen}
+        />
+        <Stack.Screen name="Edit Enquiry" component={EditEnquiryScreen} />
+
+        <Stack.Screen
+          name="TEST RIDE FEEDBACK"
+          component={TestrideFeedbackScreen}
+        />
+        <Stack.Screen
+          name="EXCHANGE VEHICLE"
+          component={ExchangeVehicleScreen}
+        />
+        <Stack.Screen
+          name="PRINT PROFORMA INVOICE"
+          component={PrintInvoiceScreen}
+        />
+        <Stack.Screen
+          name="ENQUIRY GENERATE"
+          component={GenerateEnquiryScreen}
+        />
+        <Stack.Screen name="CONTACT DETAILS" component={ContactDetailsScreen} />
+
         {/* **************************** Prospect Components ********************************* */}
 
         <Stack.Screen
@@ -171,6 +216,12 @@ const Navigator = () => {
           component={PendingFollowupPScreen}
         />
         <Stack.Screen name="New Prospect" component={NewProspectScreen} />
+        <Stack.Screen name="Prospect List" component={ProspectListScreen} />
+        <Stack.Screen
+          name="Prospect Details"
+          component={ProspectDetailsScreen}
+        />
+        <Stack.Screen name="Edit Prospect" component={EditProspectScreen} />
 
         {/* *****************  Hero Sure Components ***************************** */}
         <Stack.Screen name="HeroTwoWheeler" component={HeroTwoWheelerScreen} />

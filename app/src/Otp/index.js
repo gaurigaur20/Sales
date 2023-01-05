@@ -69,9 +69,6 @@ const OtpScreen = ({navigation, route}) => {
     setValue('');
     setResendButtonDisabledTime(RESEND_OTP_TIME_LIMIT);
     startResendOtpTimer();
-
-    // resend OTP Api call
-    // todo
     alert('Otp Sent');
   };
   const verifyOtp = async user_id => {

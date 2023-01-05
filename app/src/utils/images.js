@@ -1,5 +1,5 @@
 const appimage = require('../../assets/images/addimage.png');
-const backgorundimg = require('../../assets/images/background.png');
+const backgorundimg = require('../../assets/images/bg.jpg');
 const clockicon = require('../../assets/images/clock.svg');
 const drawerheader = require('../../assets/images/drawerheader.jpg');
 const failedEnquiryicon = require('../../assets/images/failed_enquiry.svg');

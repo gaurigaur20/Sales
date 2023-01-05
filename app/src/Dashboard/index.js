@@ -20,12 +20,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const MyIcon = ({name, onPress, text}) => {
   return (
-    <>
-      <Pressable onPress={onPress} style={Styles.pressable}>
-        <Icon name={name} onPress={onPress} style={Styles.icon}></Icon>
-        <Text style={Styles.text}>{text}</Text>
-      </Pressable>
-    </>
+    <Pressable onPress={onPress} style={Styles.pressable}>
+      <Icon
+        name={name}
+        onPress={onPress}
+        style={Styles.icon}
+        color={DColor.white}
+        size={40}></Icon>
+      <Text style={Styles.text}>{text}</Text>
+    </Pressable>
   );
 };
 
@@ -53,72 +56,63 @@ const DashboardScreen = ({navigation}) => {
   };
   return (
     <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
-      <View style={Styles.root}>
-        {/* <View>
-        <Image
-          source={IMAGES.LOGIN_SCREEN_LOGO}
-          style={{
-            height: 150,
-            width: 400,
-            resizeMode: 'contain',
-          }}
-        />
-      </View> */}
-        <View style={Styles.myIcon}>
-          <MyIcon
-            name="bicycle-outline"
-            onPress={() => downloadApp()}
-            text="Products"
-          />
-          <MyIcon
-            name="call"
-            onPress={() => navigation.navigate('Enquiry')}
-            text="Enquiry"
-          />
-          <MyIcon
-            name="people-outline"
-            onPress={() => navigation.navigate('Prospect')}
-            text="Prospect"
-          />
+      <View style={Styles.mainContainer}>
+        <View style={Styles.IconContainer}>
+          <View style={Styles.iconRow1}>
+            <MyIcon
+              name="bicycle-outline"
+              onPress={() => downloadApp()}
+              text="Products"
+            />
+            <MyIcon
+              name="call"
+              onPress={() => navigation.navigate('Enquiry')}
+              text="Enquiry"
+            />
+            <MyIcon
+              name="people-outline"
+              onPress={() => navigation.navigate('Prospect')}
+              text="Prospect"
+            />
+          </View>
+          <View style={Styles.iconRow2}>
+            <MyIcon
+              name="folder-open-outline"
+              onPress={() => downloadApp()}
+              text="Circular"
+            />
+            <MyIcon
+              name="home-outline"
+              onPress={() => navigation.navigate('AvailableStock')}
+              text="Available Stock"
+            />
+            <MyIcon
+              name="location-outline"
+              onPress={() => getSarthiApp()}
+              text="Sarthi"
+            />
+          </View>
+          <View style={Styles.iconRow3}>
+            <MyIcon
+              name="bicycle-outline"
+              onPress={() => navigation.navigate('HeroSure')}
+              text="Hero Sure"
+            />
+            <MyIcon
+              name="bicycle-outline"
+              onPress={() => downloadApp()}
+              text="myClick"
+            />
+          </View>
         </View>
-        <View style={Styles.myIcon}>
-          <MyIcon
-            name="folder-open-outline"
-            onPress={() => downloadApp()}
-            text="Circular"
-          />
-          <MyIcon
-            name="home-outline"
-            onPress={() => navigation.navigate('AvailableStock')}
-            text="Available Stock"
-          />
-          <MyIcon
-            name="location-outline"
-            onPress={() => getSarthiApp()}
-            text="Sarthi"
-          />
-        </View>
-        <View style={Styles.myIcon}>
-          <MyIcon
-            name="bicycle-outline"
-            onPress={() => navigation.navigate('HeroSure')}
-            text="Hero Sure"
-          />
-          <MyIcon
-            name="bicycle-outline"
-            onPress={() => downloadApp()}
-            text="myClick"
-          />
-        </View>
-      </View>
-      <View style={Styles.footer}>
-        <Text>
-          All rights reserved by Hero Moto Corp
-          {'\n'}
-          <Text style={{alignItems: 'center'}}>
+
+        <View style={Styles.footer}>
+          <Text style={{textAlign: 'center', color: DColor.white}}>
+            All rights reserved by Hero Moto Corp
+            {'\n'}
             Toll Free No: 1800-266-0018
           </Text>
-        </Text>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -127,44 +121,36 @@ const DashboardScreen = ({navigation}) => {
 export default DashboardScreen;
 
 const Styles = StyleSheet.create({
-  root: {
-    // flex: 1,
+  mainContainer: {
+    flex: 1,
+    margin: 4,
+  },
+  IconContainer: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  pressable: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: '10%',
-    marginLeft: '10%',
-  },
-  icon: {
-    fontSize: 50,
-    // backgroundColor: 'red',
-    // height: 70,
-    // width: 70,
-    // borderRadius: 100 / 2,
-    // width: ActualWidth(310.1),
-    borderRadius: ActualHeight(16),
-    borderWidth: 1,
-    // borderColor: DColor.lightGray,
-    textAlign: 'center',
-    marginTop: 20,
-    height: ActualHeight(44.0),
-  },
-  text: {
-    fontSize: 15,
-    marginTop: '5%',
-  },
-  myIcon: {
+  iconRow1: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
+  iconRow2: {
+    flexDirection: 'row',
+  },
+  iconRow3: {
+    flexDirection: 'row',
+  },
+  pressable: {margin: 20},
+  icon: {
+    borderRadius: ActualHeight(50),
+    borderWidth: 3,
+    padding: 10,
+    textAlign: 'center',
+    alignSelf: 'center',
+    borderColor: DColor.white,
+  },
+  text: {color: DColor.white, alignSelf: 'center', flexWrap: 'wrap'},
   footer: {
     backgroundColor: DColor.gray,
-    alignItems: 'center',
-    // textAlign: 'center',
-    marginTop: ActualHeight(323),
-    // marginBottom: 50,
+    justifyContent: 'center',
+    height: ActualHeight(50),
   },
 });

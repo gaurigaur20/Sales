@@ -9,10 +9,11 @@ import {
   Pressable,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import SelectDropdown from 'react-native-select-dropdown';
 import CheckBox from '@react-native-community/checkbox';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import DatePicker from 'react-native-date-picker';
 
 import Global from '../../../../global';
@@ -22,7 +23,7 @@ const {ActualHeight, ActualWidth} = Global;
 
 import IMAGES from '../../../utils/images';
 
-const NewProspectScreen = () => {
+const EditProspectScreen = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [mobileNumber, setMobileNumber] = useState('');
@@ -33,6 +34,7 @@ const NewProspectScreen = () => {
   const [nextFollowupDate, setNextFollowupDate] = useState('');
   const [isRideTaken, setIsRideTaken] = useState(false);
   const [comments, setComments] = useState('');
+  const [remark, setRemark] = useState('');
 
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -297,11 +299,25 @@ const NewProspectScreen = () => {
               />
             </View>
           </View>
+          <View style={Styles.inputContainer}>
+            <View style={Styles.txtContainer}>
+              <Text style={Styles.text}>Remark</Text>
+            </View>
+            <View style={Styles.txtInputContainer}>
+              <TextInput
+                value={remark}
+                placeholder={' '}
+                onChangeText={value => setRemark(value)}
+                style={Styles.remark}
+                multiline={true}
+              />
+            </View>
+          </View>
         </View>
         <View style={Styles.button}>
           <Button
-            title="SUBMIT"
-            onPress={() => console.log('form submitted')}
+            title="UPDATE DETAILS"
+            onPress={() => console.log('updated successfully')}
             color={DColor.appColor}
           />
         </View>
@@ -310,7 +326,7 @@ const NewProspectScreen = () => {
   );
 };
 
-export default NewProspectScreen;
+export default EditProspectScreen;
 
 const Styles = StyleSheet.create({
   mainContainer: {
@@ -379,4 +395,13 @@ const Styles = StyleSheet.create({
   // dropdownDropdownStyle: {backgroundColor: 'black'},
   // dropdownRowStyle: {backgroundColor: 'black', borderBottomColor: '#C5C5C5'},
   dropdownRowTxtStyle: {color: 'black', textAlign: 'center', fontSize: 14},
+  remark: {
+    backgroundColor: DColor.whitealfa,
+    width: ActualWidth(180),
+    textAlign: 'left',
+    fontSize: 12,
+
+    height: ActualHeight(35),
+    padding: 2,
+  },
 });

@@ -21,16 +21,29 @@ import IMAGES from '../utils/images';
 
 const MyIcon = ({name, onPress, text}) => {
   return (
-    <>
-      <Pressable onPress={onPress} style={Styles.pressable}>
-        <Icon name={name} onPress={onPress} style={Styles.icon}></Icon>
-        <Text style={Styles.text}>{text}</Text>
-      </Pressable>
-    </>
+    <Pressable onPress={onPress} style={Styles.pressable}>
+      <Icon
+        name={name}
+        onPress={onPress}
+        style={{
+          borderRadius: ActualHeight(50),
+          borderWidth: 3,
+          padding: 10,
+          // alignItems: 'center',
+          alignSelf: 'center',
+          borderColor: DColor.white,
+          // backgroundColor: 'red',
+        }}
+        color={DColor.white}
+        size={40}></Icon>
+      <Text style={Styles.text}>{text}</Text>
+    </Pressable>
   );
 };
 
 const EnquiryScreen = ({navigation}) => {
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [registrationNumber, setRegistrationNumber] = useState('');
   const downloadApp = () => {
     Alert.alert('App not Installed', 'Install additional library', [
       {
@@ -44,12 +57,24 @@ const EnquiryScreen = ({navigation}) => {
       },
     ]);
   };
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [registrationNumber, setRegistrationNumber] = useState('');
+
+  const handleOnSubmit = () => {
+    if (mobileNumber) {
+      navigation.navigate('Contact', {mobileNumber});
+    } else {
+      alert('please enter a mobile number');
+    }
+  };
 
   return (
-    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={Styles.root}>
-      <Text style={{textAlign: 'center', margin: 30}}>
+    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
+      <Text
+        style={{
+          textAlign: 'center',
+          margin: 30,
+          color: DColor.white,
+          fontSize: 16,
+        }}>
         To see enquiries you need to search for mobile or registration number.
       </Text>
       <View style={Styles.myIcon}>
@@ -99,6 +124,8 @@ const EnquiryScreen = ({navigation}) => {
           placeholder={'Mobile/Registration Number'}
           onChangeText={value => setMobileNumber(value)}
           style={Styles.textInput}
+          keyboardType="number-pad"
+          maxLength={10}
         />
         {/* <Pressable onPress={() => alert('coming soon!')}>
         <Text>NEXT</Text>
@@ -112,8 +139,9 @@ const EnquiryScreen = ({navigation}) => {
           }}>
           <Button
             title="NEXT"
-            onPress={() => alert('coming soon!')}
+            onPress={() => handleOnSubmit()}
             color={DColor.appColor}
+            mobileNumber={mobileNumber}
           />
         </View>
       </View>
@@ -130,20 +158,25 @@ const Styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   pressable: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: '10%',
-    marginLeft: '10%',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // marginRight: '10%',
+    // marginLeft: '10%',
+    // backgroundColor: 'yellow',
+    margin: 20,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   icon: {
-    fontSize: 50,
-    // backgroundColor: DColor,
+    // borderColor: DColor.white,
+    padding: 5,
+    backgroundColor: DColor.red,
     // height: 70,
     // width: 70,
     // borderRadius: 100 / 2,
     // width: ActualWidth(310.1),
-    borderRadius: ActualHeight(16),
-    borderWidth: 1,
+    borderRadius: ActualHeight(50),
+    // borderWidth: 2,
     // borderColor: DColor.appColor,
     textAlign: 'center',
     marginTop: 20,
@@ -152,6 +185,7 @@ const Styles = StyleSheet.create({
   text: {
     fontSize: 12,
     marginTop: '5%',
+    color: DColor.white,
   },
   myIcon: {
     flexDirection: 'row',

@@ -116,21 +116,14 @@ const LoginScreen = ({navigation}) => {
   };
   return (
     <ImageBackground
+      source={IMAGES.BACKGROUND_IMAGE}
       style={{
         flex: 1,
-      }}
-      source={IMAGES.BACKGROUND_IMAGE}>
-      <View>
-        <Image
-          source={IMAGES.LOGIN_SCREEN_LOGO}
-          style={{
-            height: 250,
-            width: 400,
-            resizeMode: 'contain',
-          }}
-        />
-      </View>
-      <ScrollView>
+      }}>
+      <View style={Styles.mainContainer}>
+        <View>
+          <Image source={IMAGES.LOGIN_SCREEN_LOGO} style={Styles.image} />
+        </View>
         <View style={Styles.loginMainBox}>
           <View style={Styles.fieldContainer}>
             <Image source={IMAGES.MOBILE_ICON} style={Styles.phoneIcon} />
@@ -142,13 +135,7 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           {/* <Button title="SEND OTP" onPress={() => handleSendOTP()} /> */}
-          <View
-            style={{
-              width: ActualWidth(210.1),
-              margin: 20,
-              // justifyContent: 'center',
-              alignSelf: 'center',
-            }}>
+          <View style={Styles.btnLogin}>
             <Button
               onPress={() => handleSendOTP()}
               title="SEND OTP"
@@ -157,7 +144,7 @@ const LoginScreen = ({navigation}) => {
             </Button>
           </View>
         </View>
-      </ScrollView>
+      </View>
       {isLoader && <Loader />}
     </ImageBackground>
   );
@@ -166,15 +153,27 @@ const LoginScreen = ({navigation}) => {
 export default LoginScreen;
 
 const Styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    // margin: 10,
+    // justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  image: {
+    // height: 250,
+    height: ActualHeight(200),
+    // backgroundColor: 'red',
+    width: ActualWidth(250),
+    resizeMode: 'contain',
+  },
   loginMainBox: {
     height: ActualHeight(228.3612),
+    // flex: 2,
+    justifyContent: 'center',
     backgroundColor: DColor.white,
     borderRadius: ActualWidth(16),
-    marginLeft: 15,
-    marginRight: 15,
     padding: 15,
-    alignContent: 'center',
-    justifyContent: 'center',
   },
 
   fieldContainer: {
@@ -185,7 +184,6 @@ const Styles = StyleSheet.create({
     backgroundColor: DColor.lightGray,
     borderRadius: ActualHeight(5),
     paddingLeft: ActualWidth(10.8),
-    // borderWidth: 1,
     borderColor: DColor.lightGray,
   },
   phoneIcon: {
@@ -200,23 +198,10 @@ const Styles = StyleSheet.create({
     fontFamily: Font.fontFamily.regularCal,
     fontSize: Font.customFont.ft16,
     color: DColor.black,
-    flex: 1,
   },
   btnLogin: {
-    backgroundColor: DColor.appColor,
-    width: ActualWidth(310.1),
-    borderRadius: ActualHeight(5),
-    borderWidth: 1,
-    borderColor: DColor.lightGray,
-    textAlign: 'center',
-    marginTop: 20,
-    height: ActualHeight(44.0),
-  },
-  textBtnLogin: {
-    padding: 10,
-    color: DColor.white,
-    fontSize: Font.customFont.ft18,
-    textAlign: 'center',
-    fontFamily: Font.fontFamily.regular,
+    alignSelf: 'center',
+    width: ActualWidth(200),
+    margin: 10,
   },
 });

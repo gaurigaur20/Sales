@@ -72,7 +72,7 @@ const ProspectScreen = ({navigation}) => {
             <Button
               title="SEARCH PROSPECT"
               color={DColor.appColor}
-              onPress={() => console.log('search propsect')}
+              onPress={() => navigation.navigate('Prospect List')}
             />
           </View>
         </View>

@@ -20,29 +20,28 @@ import IMAGES from '../../../utils/images';
 const HeroTwoWheelerScreen = () => {
   const [vinNumber, setVinNumber] = useState('');
   return (
-    <ImageBackground
-      source={IMAGES.BACKGROUND_IMAGE}
-      style={{flex: 1, alignItems: 'center'}}>
-      <View style={{margin: 50}}>
-        <Text style={{textAlign: 'center'}}>Customer VIN Number</Text>
-        <TextInput
-          placeholder="VIN number"
-          onChangeText={value => setVinNumber(value)}
-          value={vinNumber}
-          style={Styles.textInput}
-        />
-        {/* <Pressable onPress={() => alert('coming soon')}>
-        <Text>PROCEED</Text>
-      </Pressable> */}
+    <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
+      <View style={Styles.mainContainer}>
+        {/* style={{margin: 50}} */}
+        <Text style={Styles.text}>
+          Customer <Text>VIN Number</Text>
+        </Text>
+        {/* style={{textAlign: 'center'}} */}
+        <View style={Styles.textInputContainer}>
+          <TextInput
+            placeholder="VIN number"
+            onChangeText={value => setVinNumber(value)}
+            value={vinNumber}
+            style={Styles.textInput}
+          />
+        </View>
+
         <View
           style={{
-            width: ActualWidth(210.1),
-
-            // justifyContent: 'center',
-            alignSelf: 'center',
+            margin: 10,
           }}>
           <Button
-            color={DColor.appColor}
+            color={DColor.red}
             title="PROCEED"
             onPress={() => alert('proceeded')}
           />
@@ -55,14 +54,24 @@ const HeroTwoWheelerScreen = () => {
 export default HeroTwoWheelerScreen;
 
 const Styles = StyleSheet.create({
-  textInput: {
-    margin: 10,
-    width: ActualWidth(310.1),
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+    margin: 60,
+    // justifyContent: 'center',
+  },
+  textInputContainer: {
+    width: ActualWidth(250.1),
     height: ActualHeight(44.0),
-    backgroundColor: DColor.lightGray,
-    borderRadius: ActualHeight(5),
-    paddingLeft: ActualWidth(10.8),
-    // borderWidth: 1,
-    borderColor: DColor.lightGray,
+    backgroundColor: DColor.white,
+    borderRadius: ActualHeight(16),
+  },
+  textInput: {
+    margin: 4,
+  },
+  text: {
+    color: DColor.white,
+    fontWeight: 'bold',
+    margin: 20,
   },
 });
