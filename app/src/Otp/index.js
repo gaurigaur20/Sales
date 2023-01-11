@@ -166,16 +166,19 @@ const OtpScreen = ({navigation, route}) => {
             </View>
           </Pressable>
         )}
-        {/* <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
-          <Text style={styles.textBtnLogin}>Submit OTP</Text>
-        </Pressable> */}
-        <View style={{margin: 20}}>
+        <View style={{marginLeft: 20, marginRight: 10}}>
+          <Pressable onPress={() => handleOnSubmit()} style={styles.btnLogin}>
+            <Text style={styles.textBtnLogin}>SUBMIT OTP</Text>
+          </Pressable>
+        </View>
+
+        {/* <View style={{margin: 20}}>
           <Button
             onPress={() => handleOnSubmit()}
             title="Submit OTP"
             color={DColor.appColor}
           />
-        </View>
+        </View> */}
       </View>
       {isLoader && <Loader />}
     </ImageBackground>
@@ -251,17 +254,16 @@ export const styles = StyleSheet.create({
   btnLogin: {
     backgroundColor: DColor.appColor,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: DColor.white6,
-    textAlign: 'center',
-    marginTop: 30,
+    marginTop: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textBtnLogin: {
     padding: 10,
     color: DColor.white,
-    fontSize: Font.customFont.ft18,
     textAlign: 'center',
-    fontFamily: Font.fontFamily.regular,
+    fontFamily: Font.fontFamily.regularCal,
+    fontSize: Font.customFont.ft16,
   },
 });
 

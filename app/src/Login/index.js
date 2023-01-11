@@ -9,6 +9,7 @@ import {
   ScrollView,
   Dimensions,
   Button,
+  Keyboard,
 } from 'react-native';
 import React, {useState} from 'react';
 
@@ -61,6 +62,9 @@ const LoginScreen = ({navigation}) => {
       console.log('Is connected?', state.isConnected);
       if (state.isConnected) {
         getOTP();
+        {
+          Keyboard.dismiss();
+        }
       } else {
         showMessage({
           message: 'no internet',
@@ -100,10 +104,9 @@ const LoginScreen = ({navigation}) => {
 
         .catch(errData => {
           setIsLoader(false);
-          console.log('Error while sending otp', errData);
+          console.log('Error while sending otp', errData.msg);
           showMessage({
-            message:
-              'Network request failed, please check your internet connection',
+            message: errData.msg,
             type: 'danger',
             autoHide: 'true',
             duration: 1000,
@@ -135,14 +138,17 @@ const LoginScreen = ({navigation}) => {
             />
           </View>
           {/* <Button title="SEND OTP" onPress={() => handleSendOTP()} /> */}
-          <View style={Styles.btnLogin}>
-            <Button
-              onPress={() => handleSendOTP()}
-              title="SEND OTP"
-              color={DColor.appColor}>
-              {/* <Text style={Styles.textBtnLogin}>SEND OTP</Text> */}
-            </Button>
-          </View>
+
+          <Pressable onPress={() => handleSendOTP()} style={Styles.btnLogin}>
+            <Text
+              style={{
+                fontFamily: Font.fontFamily.regularCal,
+                fontSize: Font.customFont.ft16,
+              }}>
+              SEND OTP
+            </Text>
+          </Pressable>
+          {/* </View> */}
         </View>
       </View>
       {isLoader && <Loader />}
@@ -171,7 +177,7 @@ const Styles = StyleSheet.create({
     height: ActualHeight(228.3612),
     // flex: 2,
     justifyContent: 'center',
-    backgroundColor: DColor.white,
+    // backgroundColor: DColor.white,
     borderRadius: ActualWidth(16),
     padding: 15,
   },
@@ -200,8 +206,13 @@ const Styles = StyleSheet.create({
     color: DColor.black,
   },
   btnLogin: {
-    alignSelf: 'center',
-    width: ActualWidth(200),
+    backgroundColor: DColor.appColor,
+
+    height: ActualHeight(34.0),
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: ActualWidth(310.1),
     margin: 10,
   },
 });

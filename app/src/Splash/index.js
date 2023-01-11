@@ -16,17 +16,6 @@ const SplashScreen = ({navigation}) => {
   }, []);
 
   const getUserData = async () => {
-    // try {
-    //   const userId = await AsyncStorage.getItem('user');
-    //   console.log('async data', userId);
-    //   if (userId == null) {
-    //     navigation.replace('Login');
-    //   } else if (userId != null) {
-    //     navigation.replace('Dashboard');
-    //   }
-    // } catch (error) {
-    //   console.log('error', error);
-    // }
     try {
       let data = await AsyncStorage.getItem('user'); //gets user information from the async storage(for further info look into loginsaga.js)
 

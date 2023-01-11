@@ -16,7 +16,7 @@ function* verifyOtpSaga(_data) {
   try {
     const realData = _data.payload;
 
-    console.log('real Data ', realData);
+    // console.log('real Data ', realData);
     const dispatch = realData.dispatch;
     dispatch(getLoaderAction({loader: true}));
     if (__DEV__) {
@@ -58,8 +58,8 @@ function* verifyOtpSaga(_data) {
         JSON.stringify({res}),
         PAS_KEY,
       ).toString();
-      console.log('encData', encData);
-      console.log('encData', encData);
+      // console.log('encData', encData);
+      // console.log('encData', encData);
       yield AsyncStorage.setItem('user', encData);
 
       // yield AsyncStorage.setItem('user', res.login_id);

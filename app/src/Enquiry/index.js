@@ -123,7 +123,31 @@ const EnquiryScreen = ({navigation}) => {
               keyboardType="number-pad"
               maxLength={10}
             />
-            <View
+            <View>
+              <Pressable
+                onPress={() => handleOnSubmit()}
+                style={{
+                  backgroundColor: DColor.appColor,
+                  borderRadius: 5,
+                  marginTop: 10,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: ActualWidth(310.1),
+                }}>
+                <Text
+                  style={{
+                    padding: 10,
+                    color: DColor.white,
+                    textAlign: 'center',
+                    fontFamily: Font.fontFamily.regularCal,
+                    fontSize: Font.customFont.ft16,
+                  }}>
+                  NEXT
+                </Text>
+              </Pressable>
+            </View>
+
+            {/* <View
               style={{
                 width: ActualWidth(150),
                 margin: 10,
@@ -136,7 +160,7 @@ const EnquiryScreen = ({navigation}) => {
                 color={DColor.appColor}
                 mobileNumber={mobileNumber}
               />
-            </View>
+            </View> */}
           </View>
         </View>
       </View>
@@ -196,11 +220,12 @@ const Styles = StyleSheet.create({
   },
   textInput: {
     width: ActualWidth(310.1),
-    height: ActualHeight(44.0),
+    height: ActualHeight(38.0),
     backgroundColor: DColor.lightGray,
     borderRadius: ActualHeight(5),
     paddingLeft: ActualWidth(10.8),
     // borderWidth: 1,
     borderColor: DColor.lightGray,
   },
+  pressableButton: {},
 });

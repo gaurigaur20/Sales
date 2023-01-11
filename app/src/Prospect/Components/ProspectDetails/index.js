@@ -142,7 +142,7 @@ const ProspectDetailsScreen = ({navigation}) => {
             </Pressable>
 
             <Pressable
-              onPress={() => console.log('Promoted')}
+              onPress={() => navigation.navigate('Submit RideFeedback')}
               style={Styles.pressable}>
               <Text style={Styles.pressableText}>Submit Feedback(TR)</Text>
             </Pressable>

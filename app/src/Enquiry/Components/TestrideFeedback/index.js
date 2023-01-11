@@ -51,40 +51,42 @@ const TestrideFeedbackScreen = () => {
   return (
     <ScrollView>
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
           How would you rate the vehicle in terms of styling?{' '}
         </Text>
       </View>
       <RadioButtonRN data={ratings} selectedBtn={e => console.log(e)} />
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
           What do you think about the riding performance of the vehicle?
         </Text>
       </View>
       <RadioButtonRN data={ratings} selectedBtn={e => console.log(e)} />
 
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
           Are you happy with the features provided in the vehicle?
         </Text>
       </View>
       <RadioButtonRN data={agree} selectedBtn={e => console.log(e)} />
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
           When are you planning to buy the vehicle?
         </Text>
       </View>
       <RadioButtonRN data={days} selectedBtn={e => console.log(e)} />
 
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
           Will you refer this vehicle to your relatives and friends?{' '}
         </Text>
       </View>
       <RadioButtonRN data={agree} selectedBtn={e => console.log(e)} />
 
       <View style={Styles.header}>
-        <Text style={{marginLeft: 30}}>Overall Rating? </Text>
+        <Text style={{marginLeft: 30, color: DColor.white}}>
+          Overall Rating?{' '}
+        </Text>
       </View>
       <RadioButtonRN data={ratings} selectedBtn={e => console.log(e)} />
 

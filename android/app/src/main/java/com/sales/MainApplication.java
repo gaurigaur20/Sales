@@ -13,6 +13,11 @@ import com.sales.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import com.christopherdro.htmltopdf.RNHTMLtoPDFPackage;
+import com.christopherdro.RNPrint.RNPrintPackage;
+
+// include package
+
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =

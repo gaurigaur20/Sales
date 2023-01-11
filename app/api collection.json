@@ -1,0 +1,22 @@
+{
+  "PWPROCESSRS": {
+    "PWDATA": {
+      "AUTH_HSA_ORDERN": {
+        "Row": [
+          {
+            "0": "10800",
+            "1": "TEST10800"
+          }
+        ]
+      }
+    },
+    "PWERROR": {},
+    "PWHEADER": {
+      "IN_PROCESS_ID": "2",
+      "APP_ID": "HSAPT",
+      "ORG_ID": "HSAPT",
+      "OUT_PROCESS_ID": "AUTH_HSA_ORDERN",
+      "LOGIN_ID": "TEST10800"
+    }
+  }
+}

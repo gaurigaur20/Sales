@@ -1,5 +1,6 @@
 import {View, Text, Button, ImageBackground, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import Global from '../../../../global';
 import Font from '../../../../theme';
@@ -9,13 +10,89 @@ const {ActualHeight, ActualWidth} = Global;
 import IMAGES from '../../../utils/images';
 
 import RadioButtonRN from 'radio-buttons-react-native';
+import {SelectList} from 'react-native-dropdown-select-list';
+
+const data = [
+  {key: 'Canada', value: 'Canada'},
+  {key: 'England', value: 'England'},
+  {key: 'Pakistan', value: 'Pakistan'},
+  {key: 'India', value: 'India'},
+  {key: 'NewZealand', value: 'NewZealand'},
+];
 
 const VinSelected = () => {
-  return <Text>Vin is Selected</Text>;
+  const [selected, setSelected] = useState('');
+  return (
+    <View style={{}}>
+      <SelectList
+        setSelected={setSelected}
+        data={data}
+        // labelStyle={{color: 'white', textAlign: 'center'}}
+        inputStyles={{color: 'white'}}
+        placeholder="search"
+        boxStyles={{
+          border: 0,
+          margin: 20,
+          borderRadius: 0,
+          borderColor: 'white',
+          textAlign: 'center',
+        }}
+        dropdownStyles={{
+          border: 0,
+          borderRadius: 0,
+          margin: 20,
+          borderColor: 'white',
+        }}
+        dropdownTextStyles={{color: 'white'}}
+        arrowicon={
+          <FontAwesome name="chevron-down" size={12} color={'white'} />
+        }
+        searchicon={<FontAwesome name="search" size={12} color={'white'} />}
+        closeicon={<FontAwesome name="close" size={12} color={'white'} />}
+      />
+      <View style={{marginTop: 0, marginLeft: 20, marginRight: 20}}>
+        <Button
+          title="Search"
+          onPress={() => console.log(`search the ${selected}`)}
+          color={DColor.appColor}
+        />
+      </View>
+    </View>
+  );
 };
 
 const SkuSelected = () => {
-  return <Text>SKU is Selected</Text>;
+  const [selected, setSelected] = useState('');
+  return (
+    <View style={{}}>
+      <SelectList
+        setSelected={setSelected}
+        data={data}
+        // labelStyle={{color: 'white', textAlign: 'center'}}
+        inputStyles={{color: 'white'}}
+        placeholder="search"
+        boxStyles={{
+          border: 0,
+          margin: 20,
+          borderRadius: 0,
+          borderColor: 'white',
+          textAlign: 'center',
+        }}
+        dropdownStyles={{
+          border: 0,
+          borderRadius: 0,
+          margin: 20,
+          borderColor: 'white',
+        }}
+        dropdownTextStyles={{color: 'white'}}
+        arrowicon={
+          <FontAwesome name="chevron-down" size={12} color={'white'} />
+        }
+        searchicon={<FontAwesome name="search" size={12} color={'white'} />}
+        closeicon={<FontAwesome name="close" size={12} color={'white'} />}
+      />
+    </View>
+  );
 };
 
 const GenerateEnquiryScreen = () => {

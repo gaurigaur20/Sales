@@ -15,7 +15,7 @@ const {ActualHeight, ActualWidth} = Global;
 
 import IMAGES from '../../../utils/images';
 
-const RecentOrdersScreen = () => {
+const RecentOrdersScreen = ({navigation}) => {
   return (
     <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
       <View

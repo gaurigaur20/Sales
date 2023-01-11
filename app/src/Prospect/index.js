@@ -67,7 +67,28 @@ const ProspectScreen = ({navigation}) => {
               keyboardType="number-pad"
               style={Styles.textInput}
             />
-            <View
+            <Pressable
+              onPress={() => navigation.navigate('Prospect List')}
+              style={{
+                backgroundColor: DColor.appColor,
+                borderRadius: 5,
+                marginTop: 10,
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: ActualWidth(310.1),
+              }}>
+              <Text
+                style={{
+                  padding: 10,
+                  color: DColor.white,
+                  textAlign: 'center',
+                  fontFamily: Font.fontFamily.regularCal,
+                  fontSize: Font.customFont.ft16,
+                }}>
+                SEARCH PROSPECT
+              </Text>
+            </Pressable>
+            {/* <View
               style={{
                 width: ActualWidth(150.1),
                 margin: 5,
@@ -77,7 +98,7 @@ const ProspectScreen = ({navigation}) => {
                 color={DColor.appColor}
                 onPress={() => navigation.navigate('Prospect List')}
               />
-            </View>
+            </View> */}
           </View>
         </View>
       </ImageBackground>
@@ -131,7 +152,7 @@ const Styles = StyleSheet.create({
   },
   textInput: {
     width: ActualWidth(310.1),
-    height: ActualHeight(44.0),
+    height: ActualHeight(38.0),
     backgroundColor: DColor.lightGray,
     borderRadius: ActualHeight(5),
     paddingLeft: ActualWidth(10.8),

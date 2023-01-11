@@ -4,6 +4,9 @@ import React from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
+import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import RNPrint from 'react-native-print';
+
 import Global from '../../../../global';
 import Font from '../../../../theme';
 import DColor from '../../../../theme/colors';
@@ -14,6 +17,18 @@ import IMAGES from '../../../utils/images';
 const PrintInvoiceScreen = () => {
   const variants = [];
   const sku = [];
+
+  const printPDF = async () => {
+    // const htmlString = await buildDynamicHtml();
+    const options = {
+      html: '<h1 style="text-align: center;"><strong>Hello Guys</strong></h1><p style="text-align: center;">Here is an example of pdf Print in React Native</p><p style="text-align: center;"><strong>Team About React</strong></p>',
+      fileName: 'test',
+      directory: 'Documents',
+    };
+    const results = await RNHTMLtoPDF.convert(options);
+    // alert(results.filePath);
+    await RNPrint.print({filePath: results.filePath});
+  };
   return (
     <ImageBackground source={IMAGES.BACKGROUND_IMAGE} style={{flex: 1}}>
       <View style={Styles.mainContainer}>
@@ -68,7 +83,7 @@ const PrintInvoiceScreen = () => {
         <View style={Styles.button}>
           <Button
             title="PRINT"
-            onPress={() => console.log('printed')}
+            onPress={() => printPDF()}
             color={DColor.appColor}
           />
         </View>

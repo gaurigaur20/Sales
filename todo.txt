@@ -1,6 +1,11 @@
-1. handle back button(done on monday)
-2. Better UI
-3. get images and icons
-4. handle various screens through navigation and sub navigation
-5. add splash screen and async storage
-6. Customised Loader
+ENQUIRY
+1. search dropdown(generate enquiry)
+2. print pdf(print proforma invoice)
+
+Available Stock
+1. How to change orientation
+2. create a table like component to show data on the avaialble
+stock screen
+
+enable svg in your project
+splash for ios

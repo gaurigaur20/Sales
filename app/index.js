@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {View, Text, Alert, BackHandler, LogBox} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {View, Text, Alert, BackHandler, LogBox, Easing} from 'react-native';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen from './src/Login';
 import OtpScreen from './src/Otp';
@@ -50,21 +51,22 @@ import TestrideFeedbackScreen from './src/Enquiry/Components/TestrideFeedback';
 import ExchangeVehicleScreen from './src/Enquiry/Components/ExchangeVehicle';
 import PrintInvoiceScreen from './src/Enquiry/Components/PrintInvoice';
 import GenerateEnquiryScreen from './src/Enquiry/Components/GenerateEnquiry';
+import ContactDetailsScreen from './src/Enquiry/Components/ContactDetails';
 
 // ********************** Prospect Component *********************
 import TodaysFollowupPScreen from './src/Prospect/Components/TodaysFollowup';
 import PendingFollowupPScreen from './src/Prospect/Components/PendingFollowup';
 import NewProspectScreen from './src/Prospect/Components/NewProspect';
 import ProspectListScreen from './src/Prospect/Components/ProspectList';
+import ProspectDetailsScreen from './src/Prospect/Components/ProspectDetails';
+import EditProspectScreen from './src/Prospect/Components/EditProspect';
+import TestrideFeedbackProspectScreen from './src/Prospect/Components/TestrideFeedback';
 
 // ********************************* Hero Sure Component ********************
 import HeroTwoWheelerScreen from './src/HeroSure/Components/Hero2Wheeler';
 import NonHeroTwoWheelerScreen from './src/HeroSure/Components/Non-Hero2Wheeler';
-import ContactDetailsScreen from './src/Enquiry/Components/ContactDetails';
-import ProspectDetailsScreen from './src/Prospect/Components/ProspectDetails';
-import EditProspectScreen from './src/Prospect/Components/EditProspect';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 const navigationRef = React.createRef();
 
 LogBox.ignoreAllLogs();
@@ -104,9 +106,38 @@ const Navigator = () => {
     return () => backHandler.remove();
   }, []);
 
+  const config = {
+    animation: 'spring',
+    config: {
+      stiffness: 1000,
+      damping: 5000, //50
+      mass: 3,
+      overshootClamping: true, //true
+      restDisplacementThreshold: 0.01,
+      restSpeedThreshold: 0.01,
+    },
+  };
+
+  const closeConfig = {
+    animation: 'timing',
+    config: {
+      duration: 500,
+      easing: Easing.linear,
+    },
+  };
+
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName="Splash">
+      <Stack.Navigator
+        initialRouteName="Splash"
+        screenOptions={{
+          transitionSpec: {
+            open: config,
+            close: closeConfig,
+          },
+        }}
+        headerMode="float"
+        animation="fade">
         <Stack.Screen
           name="Splash"
           component={SplashScreen}
@@ -222,6 +253,10 @@ const Navigator = () => {
           component={ProspectDetailsScreen}
         />
         <Stack.Screen name="Edit Prospect" component={EditProspectScreen} />
+        <Stack.Screen
+          name="Submit RideFeedback"
+          component={TestrideFeedbackProspectScreen}
+        />
 
         {/* *****************  Hero Sure Components ***************************** */}
         <Stack.Screen name="HeroTwoWheeler" component={HeroTwoWheelerScreen} />

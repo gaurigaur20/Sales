@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {StyleSheet, View, Text, Animated, Easing} from 'react-native';
+import {StyleSheet, View, Text, Animated, Easing, Keyboard} from 'react-native';
 import LottieView from 'lottie-react-native';
 
 const Loader = () => {
@@ -15,6 +15,7 @@ const Loader = () => {
   }, []);
 
   return (
+    // <View>
     <LottieView
       autoPlay
       // loop
